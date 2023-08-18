@@ -12,7 +12,7 @@ import Carousel from "react-native-snap-carousel";
 import CaroselCartItem from "../components/CaroselCartItem";
 import { Avatar } from "react-native-paper";
 import CartButton from "../components/CartButton";
-
+import Toast from 'react-native-toast-message';
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
@@ -40,14 +40,30 @@ const ProductDetaile = ({ route: { params } }) => {
   const [quantity,setQuantity]=useState(1);
   const stock=5;
   const incrementHandler=()=>{
-   if(quantity>=stock) return;
+   if(quantity>=stock) return Toast.show({
+    type: 'error',
+    text1: "Item Does not have in Stock",
+  });
     setQuantity((prev)=>prev+1);
   }
   const decrementHandler=()=>{
-  if(quantity<=1) return;
+  if(quantity<=1) return  Toast.show({
+    type: 'error',
+    text1: 'Item Must be more than 1 !',
+  });
   setQuantity((prev)=>prev-1);
   }
-
+  
+  const addtoCartHandler=()=>{
+    if(stock===0) return Toast.show({
+      type: 'error',
+      text1: "Product Out of Stock!",
+    });
+    Toast.show({
+      type: 'success',
+      text1: 'Item Add To Cart',
+    });
+  }
   const name = "Macbook Pro";
   const price = 12000;
   const desc =
@@ -136,6 +152,7 @@ const ProductDetaile = ({ route: { params } }) => {
         <CartButton 
            
              title="Add To Cart"
+             addtoCartHandler={addtoCartHandler}
            />
       </View>
     </View>

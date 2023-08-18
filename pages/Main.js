@@ -5,6 +5,7 @@ import Home from "../screens/Home";
 import ProductDetaile from "./ProductDetaile";
 import CartComponent from "./CartComponent";
 import ProfileComponent from "./ProfileComponent";
+import Toast from 'react-native-toast-message';
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -22,6 +23,7 @@ const Main = () => {
           <Stack.Screen name="cart" component={CartComponent} />
         </Stack.Group>
       </Stack.Navigator>
+      <Toast/>
     </NavigationContainer>
   );
 };

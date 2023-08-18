@@ -3,12 +3,11 @@ import React from 'react'
 import { Button } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 
-const CartButton = ({title}) => {
-    const navigation=useNavigation();
+const CartButton = ({title,addtoCartHandler}) => {
   return (
     <Button
     
-    onPress={()=>navigation.navigate("cart")}
+    onPress={addtoCartHandler}
       className="w-full py-2 px-4 mx-3 my-2 bg-black rounded-full"
       icon="cart"
       textColor='white'
