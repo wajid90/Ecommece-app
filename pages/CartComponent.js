@@ -10,6 +10,7 @@ import React from "react";
 import Header1 from "../components/Header1";
 import { Button } from "react-native-paper";
 import CartItem from "../components/CartItem";
+import { useNavigation } from "@react-navigation/native";
 
 const itemData=[
   {
@@ -45,11 +46,21 @@ const itemData=[
     stock:3,
     price:34334,
     quantity:7,
+  },
+  {
+    id:"126",
+    name:"MaceBook 4",
+    image:"https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691914272/etgrgeiteb73wk3ofqis.jpg",
+    product:"123445jsdnckjsdnjkbckjsa",
+    stock:3,
+    price:34334,
+    quantity:7,
   }
 ]
 const CartComponent = () => {
-  const incrementHandler=(id,quantity)=>{
-    console.log(id+" "+quantity);
+  const navigation=useNavigation();
+  const incrementHandler=(id,quantity,stock)=>{
+    console.log(id+" "+quantity+" "+ stock);
   }
   const decrementHandler=(quantity)=>{
    console.log(quantity);
@@ -66,12 +77,12 @@ const CartComponent = () => {
       <Header1 headertext={"Shipping Cart"} emptyCart={true} />
     <View
       style={{
-        paddingVertical:20,
+        paddingVertical:5,
         flex:1  
       }}
     >
       <ScrollView
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       >
        {
         itemData.map((item,index)=>(
@@ -86,7 +97,9 @@ const CartComponent = () => {
           <Text>5 Items</Text>
           <Text>₹ 5000</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity 
+          onPress={itemData.length>0?()=>navigation.navigate("confirmOrder"):null}
+        >
           <Button
             icon="cart"
             className="bg-black py-2 mx-4 my-4  rounded-full"

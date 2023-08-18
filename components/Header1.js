@@ -9,7 +9,7 @@ const Header1 = ({
 }) => {
   const navigation = useNavigation();
   return (
-    <View className="flex-row items-center justify-between px-2 py-2">
+    <View className="flex-row items-center justify-between px-2 py-1">
       <View className="flex-row items-center flex-1 pl-1">
           <TouchableOpacity onPress={()=>navigation.goBack()} >
           <Avatar.Icon

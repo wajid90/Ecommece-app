@@ -19,13 +19,17 @@ const CartItem = ({item,index, incrementHandler, decrementHandler}) => {
          className="rounded-lg"
         />
       </View>
-      <View className="bg-gray-300 w-[220px] absolute rounded-lg right-1 h-full">
+      <View className="w-[220px] absolute rounded-lg right-1 h-full"
+       style={{
+        backgroundColor:index%2==0?"#e2e8f0":"#ededed"
+       }}
+      >
         <View className="flex-row justify-between items-center p-4">
-          <Text className="font-bold text-[14px] text-white">{item.name}</Text>
-          <Text className="font-bold text-[14px] text-white">₹ {item.price}</Text>
+          <Text className="font-bold text-[14px] text-gray-800">{item.name}</Text>
+          <Text className="font-bold text-[14px] text-gray-800">₹ {item.price}</Text>
         </View>
         <View className="flex-row items-center mx-3">
-            <Text className="text-[14px] text-white flex-1">Quantity</Text>
+            <Text className="text-[14px] text-gray-800 flex-1">Quantity</Text>
             <TouchableOpacity 
              onPress={()=>decrementHandler(item.quantity)}
             activeOpacity={9}>
@@ -41,7 +45,7 @@ const CartItem = ({item,index, incrementHandler, decrementHandler}) => {
               <Text>{item.quantity}</Text>
             </View>
             <TouchableOpacity activeOpacity={9}
-             onPress={()=>incrementHandler(item.id,item.quantity)}
+             onPress={()=>incrementHandler(item.id,item.quantity,item.stock)}
             >
               <Avatar.Icon
                 icon="plus"
