@@ -5,7 +5,7 @@ import { Avatar } from "react-native-paper";
 
 const Footer = ({ activeRoute = "home" }) => {
   const navigation = useNavigation();
-  const isAuthentication = false;
+  const isAuthentication = true;
   const navigatationHandler = (key) => {
     switch (key) {
       case 0:
@@ -15,8 +15,11 @@ const Footer = ({ activeRoute = "home" }) => {
         navigation.navigate("cart");
         break;
       case 2:
-        if (isAuthentication) navigation.navigate("profile");
+        if (isAuthentication) {
+          navigation.navigate("profile");
+        }else{
         navigation.navigate("login");
+        }
         break;
       default:
         navigation.navigate("home");
@@ -66,7 +69,7 @@ const Footer = ({ activeRoute = "home" }) => {
             style={{
               backgroundColor: "#c70049",
             }}
-            icon={activeRoute  === "profile" ? "account" : isAuthentication===false?"login":"login"}
+            icon={activeRoute  === "profile" ? "account" : !isAuthentication?"login":"account"}
           />
         </TouchableOpacity>
       </View>

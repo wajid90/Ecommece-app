@@ -13,6 +13,11 @@ import ForgetPassword from "../screens/ForgetPassword";
 import ResetPassword from "../screens/ResetPassword";
 import Login from "../screens/Login";
 import ChangePassword from "../screens/changePassword";
+import Profile from "./Profile";
+import ConfirmOrder from "./confirmOrder";
+import UpdateProfile from "./updateProfile";
+import AdminPanel from "./adminPanel";
+import Order from "./Order";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -26,9 +31,9 @@ const Main = () => {
         <Stack.Group>
           <Stack.Screen name="home" component={Home} />
           <Stack.Screen name="productDetaile" component={ProductDetaile} />
-          <Stack.Screen name="profile" component={ProfileComponent} />
+          <Stack.Screen name="profile" component={Profile} />
           <Stack.Screen name="cart" component={CartComponent} />
-          <Stack.Screen name="confirmOrder" component={confirmOrder} />
+          <Stack.Screen name="confirmOrder" component={ConfirmOrder} />
           <Stack.Screen name="payment" component={PaymentScreen} />
           
 
@@ -38,11 +43,17 @@ const Main = () => {
           <Stack.Screen name="forgetPassword" component={ForgetPassword} />
           <Stack.Screen name="resetPassword" component={ResetPassword} />
           <Stack.Screen name="changePassword" component={ChangePassword} />
+          <Stack.Screen name="updateProfile" component={UpdateProfile} />
+          <Stack.Screen name="adminPanel" component={AdminPanel} />
+          <Stack.Screen name="order" component={Order} />
+
+
+
           
 
 
-
-
+          
+          
 
           
         </Stack.Group>

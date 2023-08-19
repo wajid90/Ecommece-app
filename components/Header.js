@@ -19,7 +19,9 @@ const Header = ({
     <View className="flex-row items-center justify-between px-2 py-2">
       <View className="flex-row items-center flex-1 pl-1">
         {back == false ? (
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity activeOpacity={0.7}
+             onPress={()=>navigation.navigate("profile")}
+          >
             <Avatar.Image
               size={40}
               source={require("../assets/pexels-photo-220453.webp")}

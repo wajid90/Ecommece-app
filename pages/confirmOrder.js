@@ -51,7 +51,7 @@ const itemData=[
     }
   ]
 
-const confirmOrder = () => {
+const ConfirmOrder = () => {
     const itemPrice=4000;
     const shippinfPrice=200;
     const taxprice=0.18*itemPrice;
@@ -124,4 +124,4 @@ const confirmOrder = () => {
   )
 }
 
-export default confirmOrder
+export default ConfirmOrder
