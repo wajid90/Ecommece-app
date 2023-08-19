@@ -61,7 +61,7 @@ const LoginPage = ({ navigation }) => {
               top: StatusBar.currentHeight,
               left: 1,
             }}
-            className="w-[90%] flex-row justify-between mx-4 my-2 "
+            className="w-[90%] flex-row justify-between mx-4 my-2"
           >
             <TouchableOpacity
               onPress={() => navigation.goBack()}
@@ -70,7 +70,7 @@ const LoginPage = ({ navigation }) => {
               <Ionicons size={20} name="chevron-back" color="black" />
             </TouchableOpacity>
           </View>
-          <Text className="text-center font-bold text-gray-500 text-xl -mt-2">
+          <Text className="text-center font-bold text-gray-500 text-xl -mt-4">
             Login 
           </Text>
           <Formik
@@ -102,7 +102,7 @@ const LoginPage = ({ navigation }) => {
             }) => (
               <>
                 <View className="w-full">
-                  <View className="w-full mt-4 mb-2">
+                  <View className="w-full mt-1 mb-2">
                     <Text className="w-full ml-5">Email</Text>
                     <View className="flex-row items-center mx-4 my-2 p-4 bg-gray-200  shadow-lg rounded-lg">
                       <MaterialCommunityIcons
@@ -174,6 +174,13 @@ const LoginPage = ({ navigation }) => {
                         </Text>
                       )}
                     </View>
+                    <TouchableOpacity 
+                      onPress={()=>navigation.navigate("forgetPassword")}
+                    >
+                    <View className="w-[90%] flex-row items-end justify-end mx-5">
+                      <Text className="text-blue-400 text-[12px]">Forget Password</Text>
+                    </View>
+                    </TouchableOpacity>
                   </View>
                 </View>
 
@@ -185,7 +192,9 @@ const LoginPage = ({ navigation }) => {
                   Login
                 </Button>
               </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+                <TouchableOpacity onPress={() => navigation.navigate("SignUp")}
+                 activeOpacity={0.9}
+                >
                 <Button
                  className="px-4 py-2 bg-color1 mx-4  rounded-full "
                  textColor="white"
