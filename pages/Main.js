@@ -7,6 +7,7 @@ import CartComponent from "./CartComponent";
 import ProfileComponent from "./ProfileComponent";
 import Toast from 'react-native-toast-message';
 import confirmOrder from "./confirmOrder";
+import PaymentScreen from "../screens/PaymentScreen";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -23,6 +24,8 @@ const Main = () => {
           <Stack.Screen name="profile" component={ProfileComponent} />
           <Stack.Screen name="cart" component={CartComponent} />
           <Stack.Screen name="confirmOrder" component={confirmOrder} />
+          <Stack.Screen name="payment" component={PaymentScreen} />
+
 
 
           

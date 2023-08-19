@@ -3,6 +3,7 @@ import React from 'react'
 import Header1 from '../components/Header1'
 import ConfirmOrderItem from '../components/ConfirmOrderItem'
 import { Button } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 
 const itemData=[
     {
@@ -54,6 +55,8 @@ const confirmOrder = () => {
     const itemPrice=4000;
     const shippinfPrice=200;
     const taxprice=0.18*itemPrice;
+
+    const navigation=useNavigation();
   return (
     <View
       style={{
@@ -105,9 +108,10 @@ const confirmOrder = () => {
           <Text className="font-bold">{itemPrice+shippinfPrice+taxprice}</Text>
         </View>
         <TouchableOpacity
-          onPress={itemData.length>0?()=>navigation.navigate("confirmOrder"):null}
+          onPress={itemData.length>0?()=>navigation.navigate("payment"):null}
         >
           <Button
+          
             icon="chevron-right"
             className="bg-black py-2 mx-4 my-4  rounded-full"
             textColor="white"
