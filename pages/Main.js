@@ -12,6 +12,7 @@ import Register from "../screens/Register";
 import ForgetPassword from "../screens/ForgetPassword";
 import ResetPassword from "../screens/ResetPassword";
 import Login from "../screens/Login";
+import ChangePassword from "../screens/changePassword";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -36,6 +37,8 @@ const Main = () => {
           <Stack.Screen name="SignUp" component={Register} />
           <Stack.Screen name="forgetPassword" component={ForgetPassword} />
           <Stack.Screen name="resetPassword" component={ResetPassword} />
+          <Stack.Screen name="changePassword" component={ChangePassword} />
+          
 
 
 
