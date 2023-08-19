@@ -35,6 +35,8 @@ const signUpSchema = Yup.object().shape({
       /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
       "Password should contain at least one special character"
     ),
+
+    
 });
 
 const Register = ({ navigation }) => {
@@ -91,6 +93,9 @@ const Register = ({ navigation }) => {
               email: "",
               location: "",
               password: "",
+              city:"",
+              pinCode:"",
+              country:""
             }}
             validationSchema={signUpSchema}
             onSubmit={(values, { resetForm }) => {
@@ -248,6 +253,107 @@ const Register = ({ navigation }) => {
                       {touched.password && errors.password && (
                         <Text className="text-xs -mt-2 text-red-700">
                           {errors.password}
+                        </Text>
+                      )}
+                    </View>
+                  </View>
+                  <View className="w-full">
+                    <Text className="w-full ml-5 text-xs">City</Text>
+                    <View className="flex-row  items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
+                      <MaterialCommunityIcons
+                        name="lock-outline"
+                        size={24}
+                        color="gray"
+                        style={{
+                          marginRight: 10,
+                        }}
+                      />
+                      <TextInput
+                        secureTextEntry={obsecureText}
+                        placeholder="Enter Your city .."
+                        onFocus={() => setFieldTouched("city")}
+                        value={values.city}
+                        onChangeText={handleChange("city")}
+                        onBlur={() => setFieldTouched("city", "")}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        style={{
+                          flex: 1,
+                        }}
+                      />
+                     
+                    </View>
+                    <View className="w-[90%] mx-5">
+                      {touched.city && errors.city && (
+                        <Text className="text-xs -mt-2 text-red-700">
+                          {errors.city}
+                        </Text>
+                      )}
+                    </View>
+                  </View>
+                  <View className="w-full">
+                    <Text className="w-full ml-5 text-xs">Zip Code</Text>
+                    <View className="flex-row  items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
+                      <MaterialCommunityIcons
+                        name="lock-outline"
+                        size={24}
+                        color="gray"
+                        style={{
+                          marginRight: 10,
+                        }}
+                      />
+                      <TextInput
+                        secureTextEntry={obsecureText}
+                        placeholder="Enter Your pinCode .."
+                        onFocus={() => setFieldTouched("pinCode")}
+                        value={values.pinCode}
+                        onChangeText={handleChange("pinCode")}
+                        onBlur={() => setFieldTouched("pinCode", "")}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        style={{
+                          flex: 1,
+                        }}
+                      />
+                    </View>
+                    <View className="w-[90%] mx-5">
+                      {touched.pinCode && errors.pinCode && (
+                        <Text className="text-xs -mt-2 text-red-700">
+                          {errors.pinCode}
+                        </Text>
+                      )}
+                    </View>
+                  </View>
+                  <View className="w-full">
+                    <Text className="w-full ml-5 text-xs">Country</Text>
+                    <View className="flex-row  items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
+                      <MaterialCommunityIcons
+                        name="lock-outline"
+                        size={24}
+                        color="gray"
+                        style={{
+                          marginRight: 10,
+                        }}
+                      />
+                      <TextInput
+                        secureTextEntry={obsecureText}
+                        placeholder="Enter Your country .."
+                        onFocus={() => setFieldTouched("country")}
+                        value={values.country}
+                        onChangeText={handleChange("country")}
+                        onBlur={() => setFieldTouched("country", "")}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        style={{
+                          flex: 1,
+                        }}
+                      />
+                      
+                    </View>
+                    <View className="w-[90%] mx-5">
+                      {touched.country && errors.country && (
+                        <Text className="text-xs -mt-2 text-red-700">
+                          {errors.country}
                         </Text>
                       )}
                     </View>
