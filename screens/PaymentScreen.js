@@ -4,7 +4,7 @@ import Header1 from '../components/Header1'
 import { Button, RadioButton } from 'react-native-paper'
 
 const PaymentScreen = () => {
-  const [paymentMethod,setPaymentMethod]=useState("");
+  const [paymentMethod,setPaymentMethod]=useState("ONLINE");
 
   return (
     <View
@@ -43,7 +43,7 @@ const PaymentScreen = () => {
                  value={"COD"}
               />
              </View>
-             <View className="p-5 shadow shadow-lg bg-white flex-row rounded-md justify-between items-center my-1">
+             <View className="p-5 shadow-lg bg-white flex-row rounded-md justify-between items-center my-1">
               <Text className="font-bold text-[14px]">Card</Text>
               <RadioButton
                  color="#c70049"
@@ -57,6 +57,7 @@ const PaymentScreen = () => {
           <Button
              className="bg-black/[0.8] px-5 py-2 rounded-full my-8" 
              textColor='white'
+             icon={paymentMethod==="COD"?"check-circle":"circle-multiple-outline"}
           >
      {paymentMethod==="COD"?"Place Order":"Pay"}
           </Button>
