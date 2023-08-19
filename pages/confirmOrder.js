@@ -75,8 +75,8 @@ const confirmOrder = () => {
        {
         itemData.map((item,index)=>(
           <ConfirmOrderItem item={item} 
-          
-            key={item.product}
+            key={index}
+            product={item.product}
             price={item.price}
             image={item.image}
             name={item.name}
@@ -87,7 +87,7 @@ const confirmOrder = () => {
       </ScrollView>
         
     </View>
-      <View className="bg-gray-100 pt-2 px-4">
+      <View className="bg-gray-100 pt-2 px-4 ">
         <View className="flex-row justify-between items-center mx-4 my-1">
           <Text className="text-[13px]">Items price</Text>
           <Text className="text-[13px]">{itemPrice}</Text>
