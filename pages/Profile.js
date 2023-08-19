@@ -159,18 +159,14 @@ const Profile = () => {
         />
         
       </View>
+      <TouchableOpacity>
       <View className="bg-white border border-gray-100 mx-3 my-2 flex-row  justify-between items-center">
         <View className="flex-row items-center  my-2 px-4 py-2">
-        <MaterialCommunityIcons name="clear" size={24} color="black" />
+        <Ionicons name="md-remove-circle-outline" size={24} color="black" />
           <Text className="ml-4 font-semibold">Clear History</Text>
         </View>
-        <IconButton
-          icon="chevron-right"
-          textColor="black"
-          onPress={() => naviagtion.navigate("resetPassword")}
-        />
-        
       </View>
+      </TouchableOpacity>
 
       <TouchableOpacity>
       <View className="bg-white border border-gray-100 mx-3 my-2 flex-row  justify-between items-center">
