@@ -255,6 +255,7 @@ const Register = ({ navigation }) => {
                 </View>
                 <TouchableOpacity
                    onPress={isValid ? handleSubmit : inValidForm}
+                   activeOpacity={0.9}
                 >
                 <Button
                  className="px-4 py-2 bg-color1 mx-4 my-1 rounded-full "
@@ -265,10 +266,21 @@ const Register = ({ navigation }) => {
                >
                   Register
                 </Button>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={()=>navigation.navigate("login")}
+                activeOpacity={0.9}
+              >
             
-                  <Text className="text-center text-white px-4 py-4 border-2 mx-4 mb-2 bg-black border-gray-200 rounded-full font-bold">
-                    Login
-                  </Text>
+              <Button
+                 className="px-4 py-2 bg-black mx-4 my-1 rounded-full "
+                 textColor="white"
+                 isValid={isValid}
+               
+                  lodder={isLoadding}
+               >
+                  Login
+                </Button>
                 </TouchableOpacity>
               </>
             )}
