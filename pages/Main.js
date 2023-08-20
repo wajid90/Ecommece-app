@@ -18,6 +18,9 @@ import ConfirmOrder from "./confirmOrder";
 import UpdateProfile from "./updateProfile";
 import AdminPanel from "./adminPanel";
 import Order from "./Order";
+import Wallet from "./Wallet";
+import AdminProducts from "./products";
+import AdminAnalysics from "./adminAnalysics";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -44,12 +47,14 @@ const Main = () => {
           <Stack.Screen name="resetPassword" component={ResetPassword} />
           <Stack.Screen name="changePassword" component={ChangePassword} />
           <Stack.Screen name="updateProfile" component={UpdateProfile} />
-          <Stack.Screen name="adminPanel" component={AdminPanel} />
           <Stack.Screen name="order" component={Order} />
 
 
 
-          
+          <Stack.Screen name="dashboard" component={AdminPanel} />
+          <Stack.Screen name="wallets" component={Wallet} />
+          <Stack.Screen name="products" component={AdminProducts} />
+          <Stack.Screen name="analysis" component={AdminAnalysics} />
 
 
           

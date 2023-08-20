@@ -111,7 +111,7 @@ const Profile = () => {
         <IconButton
           icon="chevron-right"
           textColor="black"
-          onPress={() => naviagtion.navigate("adminPanel")}
+          onPress={() => naviagtion.navigate("dashboard")}
         />
       </View>
       <View className="bg-white border border-gray-100 mx-3 my-2 flex-row  justify-between items-center">

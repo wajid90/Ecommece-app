@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar } from "react-native-paper";
-import { AntDesign, Feather, FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, Feather, FontAwesome, Fontisto, Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 const AdminFooter = ({ activeRoute = "dashboard" }) => {
   const navigation = useNavigation();
@@ -13,13 +13,16 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
         navigation.navigate("dashboard");
         break;
       case 1:
-        navigation.navigate("Analysics");
+        navigation.navigate("analysis");
         break;
       case 2:
-        navigation.navigate("Reviews");
+        navigation.navigate("wallets");
         break;
       case 3:
-        navigation.navigate("Settings");
+          navigation.navigate("products");
+        break;
+      case 4:
+        navigation.navigate("profile");
         break;
       default:
         navigation.navigate("dashboard");
@@ -50,44 +53,48 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
           activeOpacity={0.8}
           onPress={() => navigatationHandler(1)}
         >
-            <MaterialIcons name="analytics"  color="white"
-            size={50}
+          <View className="flex-col items-center p-2 mt-1">
+          <MaterialIcons name="analytics"  color="white"
+            size={20}
             style={{
               backgroundColor: "#c70049",
             }}/>
-          
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => navigatationHandler(1)}
-        >
-           <Ionicons name="wallet-outline"   color="white"
-            size={50}
-            style={{
-              backgroundColor: "#c70049",
-            }} />
+          <Text className="text-white text-xs">analytics</Text>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => navigatationHandler(2)}
         >
-            <MaterialIcons name="rate-review"  size={50}
+          <View className="flex-col items-center p-2 ml-2">
+           <Ionicons name="wallet"   color="white"
+            size={22}
             style={{
               backgroundColor: "#c70049",
             }} />
-           
-        
+   <Text className="text-white text-xs">wallet</Text>
+
+</View>
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigatationHandler(2)}
+          onPress={() => navigatationHandler(3)}
         >
-            <Feather name="settings"  color="white"
-            size={50}
-            style={{
-              backgroundColor: "#c70049",
-            }} />
-        
+           <View className="flex-col items-center p-2 mt-1 ml-12 ">
+           <Fontisto name="preview" size={20} color="white" />
+           <Text className="text-white text-xs">products</Text>
+
+           </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigatationHandler(4)}
+        >
+           <View className="flex-col items-center p-2 mt-1">
+            <MaterialIcons name="admin-panel-settings" size={22} color="white" />
+            <Text className="text-white text-[10px]">My Account</Text>
+
+        </View>
         </TouchableOpacity>
       </View>
       <View
@@ -106,9 +113,10 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => navigatationHandler(0)}
+          className="bg-color1 p-4 rounded-full"
         >
-           <AntDesign name="dashboard" size={24} color="black" 
-             className=""
+           <AntDesign name="dashboard" size={35} color="white" 
+             
            />
          
         </TouchableOpacity>
