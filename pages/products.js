@@ -50,7 +50,7 @@ const AdminProducts = () => {
         flex: 1,
       }}
     >
-      <View className="flex-row justify-between items-center mx-4 my-4 border-b border-gray-100 pb-2">
+      <View className="flex-row justify-between items-center mx-4 mt-4 border-b border-gray-100 pb-2">
        <View className="flex-row p-3 rounded-full bg-gray-100">
        <TouchableOpacity
            onPress={()=>navigation.goBack()}
@@ -73,7 +73,7 @@ const AdminProducts = () => {
       <ScrollView
      showsVerticalScrollIndicator={false}
    >
-      <View className="flex-1 relative">
+      <View className="flex-1 relative mb-6">
         <PieChart
           style={{
             marginVertical: 8,
@@ -108,15 +108,21 @@ const AdminProducts = () => {
           </TouchableOpacity>
         </View>
         <View className="w-full flex-row items-center mx-4 my-2">
-        <TouchableOpacity className="w-[45%] rounded-lg bg-color1 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
+        <TouchableOpacity
+          
+        className="w-[45%] rounded-lg bg-color1 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
           <View className="flex-row items-center justify-between ">
            <Text className="font-bold text-lg text-white px-2">All Product</Text>
-           <Avatar.Icon
+           <TouchableOpacity
+           onPress={()=>navigation.navigate("admingetAllproducts")}>
+              <Avatar.Icon
               size={27}
               icon="arrow-right"
               color="white"
               className="bg-color1"
             />
+           </TouchableOpacity>
+           
           </View>
           <View className="flex-row items-center justify-between mx-2">
             <Text className="text-xs text-white my-2">Products Size </Text>
@@ -130,15 +136,21 @@ const AdminProducts = () => {
             <View className="bg-white h-2 rounded-full w-[50%]"></View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity className="w-[45%] rounded-lg bg-gray-100 p-2 transition-transform active:scale-95 duration-0">
+        <TouchableOpacity
+         
+        className="w-[45%] rounded-lg bg-gray-100 p-2 transition-transform active:scale-95 duration-0">
         <View className="flex-row items-center justify-between ">
            <Text className="font-bold text-lg text-black px-2">All Orders</Text>
-           <Avatar.Icon
+           <TouchableOpacity
+         onPress={()=>navigation.navigate("admingetAllOrders")}>
+            <Avatar.Icon
               size={27}
               icon="arrow-right"
               color="black"
               className="bg-transparent"
             />
+         </TouchableOpacity>
+           
           </View>
           <View className="flex-row items-center justify-between mx-2">
             <Text className="font-semibold text-black/[0.7] my-2">Orders </Text>
@@ -154,15 +166,20 @@ const AdminProducts = () => {
         </TouchableOpacity>
       </View>
       <View className="w-full flex-row items-center mx-4 my-4 border-b border-gray-100 pb-5">
-        <TouchableOpacity className="w-[45%] rounded-lg bg-gray-100 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
+        <TouchableOpacity
+        className="w-[45%] rounded-lg bg-gray-100 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
         <View className="flex-row items-center justify-between ">
            <Text className="font-bold text-lg text-black px-2">Add Product</Text>
-           <Avatar.Icon
+           <TouchableOpacity
+           onPress={()=>navigation.navigate("adminaddProduct")}>
+              <Avatar.Icon
               size={27}
               icon="arrow-right"
               color="black"
               className="bg-transparent"
             />
+           </TouchableOpacity>
+          
           </View>
           <View className="flex-row items-center justify-between mx-2">
             <Text className="font-semibold text-black/[0.7] my-2">
@@ -177,15 +194,21 @@ const AdminProducts = () => {
             <View className="bg-gray-300 h-2 rounded-full w-[50%]"></View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity className="w-[45%] rounded-lg bg-gray-100 p-2 transition-transform active:scale-95 duration-0">
+        <TouchableOpacity
+          
+        className="w-[45%] rounded-lg bg-gray-100 p-2 transition-transform active:scale-95 duration-0">
         <View className="flex-row items-center justify-between ">
            <Text className="font-bold text-lg text-black px-2">Add Category</Text>
-           <Avatar.Icon
+           <TouchableOpacity
+           onPress={()=>navigation.navigate("adminAddCategory")}>
+             <Avatar.Icon
               size={27}
               icon="arrow-right"
               color="black"
               className="bg-transparent"
             />
+           </TouchableOpacity>
+           
           </View>
           <View className="flex-row items-center justify-between mx-2">
             <Text className="font-semibold text-black/[0.7] my-2">
@@ -203,15 +226,21 @@ const AdminProducts = () => {
      
       </View>
       <View className="w-full flex-row items-center mx-4 -mt-4 mb-12 border-b border-gray-100 pb-5">
-        <TouchableOpacity className="w-[45%] rounded-lg bg-gray-100 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
+        <TouchableOpacity 
+        
+        className="w-[45%] rounded-lg bg-gray-100 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
         <View className="flex-row items-center justify-between ">
            <Text className="font-bold text-lg text-black px-2">All Payment</Text>
-           <Avatar.Icon
+           <TouchableOpacity 
+            onPress={()=>navigation.navigate("admingetAllPayment")}>
+               <Avatar.Icon
               size={27}
               icon="arrow-right"
               color="black"
               className="bg-transparent"
             />
+            </TouchableOpacity>
+          
           </View>
           <View className="flex-row items-center justify-between mx-2">
             <Text className="font-semibold text-black/[0.7] my-2">
@@ -226,15 +255,22 @@ const AdminProducts = () => {
             <View className="bg-gray-300 h-2 rounded-full w-[50%]"></View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity className="w-[45%] rounded-lg bg-gray-100 p-2 transition-transform active:scale-95 duration-0">
+        <TouchableOpacity 
+          
+        className="w-[45%] rounded-lg bg-gray-100 p-2 transition-transform active:scale-95 duration-0">
         <View className="flex-row items-center justify-between ">
            <Text className="font-bold text-lg text-black px-2">All Users</Text>
-           <Avatar.Icon
+
+           <TouchableOpacity 
+           onPress={()=>navigation.navigate("adminGetAllUsers")}>
+               <Avatar.Icon
               size={27}
               icon="arrow-right"
               color="black"
               className="bg-transparent"
             />
+           </TouchableOpacity>
+          
           </View>
           <View className="flex-row items-center justify-between mx-2">
             <Text className="font-semibold text-black/[0.7] my-2">

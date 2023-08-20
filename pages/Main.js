@@ -21,6 +21,12 @@ import Order from "./Order";
 import Wallet from "./Wallet";
 import AdminProducts from "./products";
 import AdminAnalysics from "./adminAnalysics";
+import AdminGetAllProducts from "./AdminGetAllProducts";
+import AdminGetAllOrders from "./AdminGetAllOrders";
+import AdminaddProduct from "./AdminaddProduct";
+import AdmingetAllPayment from "./AdmingetAllPayment";
+import AdminGetAllUsers from "./AdminGetAllUsers";
+import AdminAddCategory from "./AdminAddCategory";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -54,7 +60,14 @@ const Main = () => {
           <Stack.Screen name="dashboard" component={AdminPanel} />
           <Stack.Screen name="wallets" component={Wallet} />
           <Stack.Screen name="products" component={AdminProducts} />
-          <Stack.Screen name="analysis" component={AdminAnalysics} />
+          <Stack.Screen name="admingetAllproducts" component={AdminGetAllProducts} />
+          <Stack.Screen name="admingetAllOrders" component={AdminGetAllOrders} />
+
+          <Stack.Screen name="adminaddProduct" component={AdminaddProduct} />
+          <Stack.Screen name="adminAddCategory" component={AdminAddCategory} />
+          <Stack.Screen name="admingetAllPayment" component={AdmingetAllPayment} />
+          <Stack.Screen name="adminGetAllUsers" component={AdminGetAllUsers} />
+          
 
 
           
