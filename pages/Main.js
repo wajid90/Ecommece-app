@@ -27,6 +27,7 @@ import AdminaddProduct from "./AdminaddProduct";
 import AdmingetAllPayment from "./AdmingetAllPayment";
 import AdminGetAllUsers from "./AdminGetAllUsers";
 import AdminAddCategory from "./AdminAddCategory";
+import AdminUpdateProduct from "./adminUpdateProduct";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -67,6 +68,7 @@ const Main = () => {
           <Stack.Screen name="adminAddCategory" component={AdminAddCategory} />
           <Stack.Screen name="admingetAllPayment" component={AdmingetAllPayment} />
           <Stack.Screen name="adminGetAllUsers" component={AdminGetAllUsers} />
+          <Stack.Screen name="adminUpdateProduct" component={AdminUpdateProduct} />
           
 
 

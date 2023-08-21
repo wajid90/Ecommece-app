@@ -38,7 +38,99 @@ const Home = () => {
     { category: "furniture 7", _id: "7" },
   ];
 
-
+  const products = [
+    {
+      _id: "64d88c194a214b6feb2744e4",
+      name: "latest Furniture",
+      description: "this is the latest products to buy ....",
+      price: 1000,
+      stock: 5,
+      images: [
+        {
+          public_id: "etgrgeiteb73wk3ofqis",
+          url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691914272/etgrgeiteb73wk3ofqis.jpg",
+          _id: {
+            $oid: "64d890214a214b6feb274500",
+          },
+        },
+        {
+          public_id: "ags3orubcz6e5qj40b0y",
+          url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691916144/ags3orubcz6e5qj40b0y.jpg",
+          _id: {
+            $oid: "64d897714a214b6feb27450a",
+          },
+        },
+      ],
+    },
+    {
+      _id: "64d88c824a214b6feb2744e8",
+      name: "latest Furniture 2",
+      description: "this is the latest products to buy 2 ....",
+      price: 1000,
+      stock: 5,
+      images: [
+        {
+          public_id: "qsdcnm2bib7usjtm2srb",
+          url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691913345/qsdcnm2bib7usjtm2srb.jpg",
+          _id: {
+            $oid: "64d88c824a214b6feb2744e9",
+          },
+        },
+      ],
+    },
+    {
+      _id: {
+        $oid: "64d88c824a214b6feb2744e8",
+      },
+      name: "latest Furniture 2",
+      description: "this is the latest products to buy 2 ....",
+      price: 1000,
+      stock: 5,
+      images: [
+        {
+          public_id: "qsdcnm2bib7usjtm2srb",
+          url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691913345/qsdcnm2bib7usjtm2srb.jpg",
+          _id: {
+            $oid: "64d88c824a214b6feb2744e9",
+          },
+        },
+      ],
+    },
+    {
+      _id: {
+        $oid: "64d88c824a214b6feb2744e0",
+      },
+      name: "latest Furniture 2",
+      description: "this is the latest products to buy 2 ....",
+      price: 1000,
+      stock: 5,
+      images: [
+        {
+          public_id: "qsdcnm2bib7usjtm2srb",
+          url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691913345/qsdcnm2bib7usjtm2srb.jpg",
+          _id: {
+            $oid: "64d88c824a214b6feb2744e9",
+          },
+        },
+      ],
+    },
+    {
+      _id: "64d88c824a214b6feb2744e9",
+      name: "latest Furniture 2",
+      description: "this is the latest products to buy 2 ....",
+      price: 1000,
+      stock: 5,
+      images: [
+        {
+          public_id: "qsdcnm2bib7usjtm2srb",
+          url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691913345/qsdcnm2bib7usjtm2srb.jpg",
+          _id: {
+            $oid: "64d88c824a214b6feb2744e9",
+          },
+        },
+      ],
+    },
+  ];
 
   return (
     <>
