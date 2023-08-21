@@ -150,12 +150,12 @@ const Profile = () => {
       <View className="bg-white border border-gray-100 mx-3 my-2 flex-row  justify-between items-center">
         <View className="flex-row items-center  my-2 px-4 py-2">
         <MaterialCommunityIcons name="lock-reset" size={24} color="black" />
-          <Text className="ml-4 font-semibold">Reset Password</Text>
+          <Text className="ml-4 font-semibold">forgot Password</Text>
         </View>
         <IconButton
           icon="chevron-right"
           textColor="black"
-          onPress={() => naviagtion.navigate("resetPassword")}
+          onPress={() => naviagtion.navigate("forgetPassword")}
         />
         
       </View>

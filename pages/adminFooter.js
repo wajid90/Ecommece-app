@@ -82,7 +82,7 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
         >
            <View className="flex-col items-center p-2 mt-1 ml-12 ">
            <Fontisto name="preview" size={20} color="white" />
-           <Text className="text-white text-xs">products</Text>
+           <Text className="text-white text-xs">fetured</Text>
 
            </View>
         </TouchableOpacity>
