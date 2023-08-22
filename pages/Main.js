@@ -28,6 +28,8 @@ import AdmingetAllPayment from "./AdmingetAllPayment";
 import AdminGetAllUsers from "./AdminGetAllUsers";
 import AdminAddCategory from "./AdminAddCategory";
 import AdminUpdateProduct from "./adminUpdateProduct";
+import CameraScreen from "./CameraScreen";
+import ProductImages from "./ProductImages";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -69,6 +71,10 @@ const Main = () => {
           <Stack.Screen name="admingetAllPayment" component={AdmingetAllPayment} />
           <Stack.Screen name="adminGetAllUsers" component={AdminGetAllUsers} />
           <Stack.Screen name="adminUpdateProduct" component={AdminUpdateProduct} />
+          <Stack.Screen name="productImages" component={ProductImages} />
+
+          <Stack.Screen name="camera" component={CameraScreen} />
+
           
 
 

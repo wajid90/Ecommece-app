@@ -10,7 +10,7 @@ import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import { TextInput } from "react-native";
 import { Alert } from "react-native";
-import { Button } from "react-native-paper";
+import { Avatar, Button } from "react-native-paper";
 // import { launchImageLibrary } from "react-native-image-picker";
 
 const signUpSchema = Yup.object().shape({
@@ -35,15 +35,16 @@ const signUpSchema = Yup.object().shape({
       /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
       "Password should contain at least one special character"
     ),
-
-    
 });
 
-const Register = ({ navigation }) => {
+const Register = ({ navigation, route }) => {
   const [obsecureText, useObsecureText] = useState(true);
 
-
-  const isLoadding=false;
+  const [image, setImage] = useState("");
+  const isLoadding = false;
+  useEffect(() => {
+    if (route.params?.image) setImage(route.params?.image);
+  }, [route.params]);
 
   const inValidForm = () => {
     Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
@@ -61,14 +62,44 @@ const Register = ({ navigation }) => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView>
         <View className="relative w-full bg-white">
-          <Image
-            source={require("../assets/sign-up-concept-illustration_114360-7865.jpg")}
-            style={{
-              width: "100%",
-              height: 400,
-              resizeMode: "contain",
-            }}
-          />
+          <View className="w-[100%] h-[160px] my-8  mx-2 flex-row justify-center">
+            <View className="w-[40%] h-[160px] mt-2">
+              <Image
+                source={
+                  image
+                    ? { uri: image }
+                    : require("../assets/pexels-photo-220453.webp")
+                }
+                style={{
+                  width: "100%",
+                  height: "90%",
+                  objectFit: "cover",
+                }}
+                className="rounded-full relative"
+              />
+            </View>
+            <View
+              style={{
+                zIndex: 10,
+                backgroundColor: "black",
+                position: "absolute",
+                bottom: 16,
+                right: 110,
+                borderRadius: 100,
+                borderWidth: 2,
+                borderColor: "white",
+              }}
+            >
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() =>
+                  navigation.navigate("camera")
+                }
+              >
+                <Avatar.Icon icon="camera" size={23} />
+              </TouchableOpacity>
+            </View>
+          </View>
           <View
             style={{
               position: "absolute",
@@ -93,9 +124,9 @@ const Register = ({ navigation }) => {
               email: "",
               location: "",
               password: "",
-              city:"",
-              pinCode:"",
-              country:""
+              city: "",
+              pinCode: "",
+              country: "",
             }}
             validationSchema={signUpSchema}
             onSubmit={(values, { resetForm }) => {
@@ -281,7 +312,6 @@ const Register = ({ navigation }) => {
                           flex: 1,
                         }}
                       />
-                     
                     </View>
                     <View className="w-[90%] mx-5">
                       {touched.city && errors.city && (
@@ -348,7 +378,6 @@ const Register = ({ navigation }) => {
                           flex: 1,
                         }}
                       />
-                      
                     </View>
                     <View className="w-[90%] mx-5">
                       {touched.country && errors.country && (
@@ -360,33 +389,30 @@ const Register = ({ navigation }) => {
                   </View>
                 </View>
                 <TouchableOpacity
-                   onPress={isValid ? handleSubmit : inValidForm}
-                   activeOpacity={0.9}
+                  onPress={isValid ? handleSubmit : inValidForm}
+                  activeOpacity={0.9}
                 >
-                <Button
-                 className="px-4 py-2 bg-color1 mx-4 my-1 rounded-full "
-                 textColor="white"
-                 isValid={isValid}
-               
-                  lodder={isLoadding}
-               >
-                  Register
-                </Button>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={()=>navigation.navigate("login")}
-                activeOpacity={0.9}
-              >
-            
-              <Button
-                 className="px-4 py-2 bg-black mx-4 my-1 rounded-full "
-                 textColor="white"
-                 isValid={isValid}
-               
-                  lodder={isLoadding}
-               >
-                  Login
-                </Button>
+                  <Button
+                    className="px-4 py-2 bg-color1 mx-4 my-1 rounded-full "
+                    textColor="white"
+                    isValid={isValid}
+                    lodder={isLoadding}
+                  >
+                    Register
+                  </Button>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("login")}
+                  activeOpacity={0.9}
+                >
+                  <Button
+                    className="px-4 py-2 bg-black mx-4 my-1 rounded-full "
+                    textColor="white"
+                    isValid={isValid}
+                    lodder={isLoadding}
+                  >
+                    Login
+                  </Button>
                 </TouchableOpacity>
               </>
             )}

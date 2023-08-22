@@ -1,13 +1,21 @@
 import { View, Text, Platform, StatusBar, TouchableOpacity, ScrollView } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, Button, IconButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "react-native";
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons, Octicons } from "@expo/vector-icons";
 
 
-const Profile = () => {
-  const naviagtion = useNavigation();
+const Profile = ({route}) => {
+
+  const [image,setImage]=useState("");
+
+  const naviagtion=useNavigation();
+
+  useEffect(()=>{
+    if(route.params?.image) setImage(route.params?.image);
+ },[route.params])
+
   const logoutHandler = () => {
 
   }
@@ -48,7 +56,7 @@ const Profile = () => {
       <View className="w-[95%] h-[150px]  mx-2 flex-row">
         <View className="w-[40%] h-[150px] mt-2">
           <Image
-            source={require("../assets/pexels-photo-220453.webp")}
+            source={image?{uri:image}:require("../assets/pexels-photo-220453.webp")}
             style={{
               width: "100%",
               height: "90%",
@@ -56,6 +64,7 @@ const Profile = () => {
             }}
             className="rounded-full relative"
           />
+          
         </View>
         <View className="w-[60%] h-[150px] mt-5 ml-4">
           <Text className="font-bold text-[18px]">Wajid Ali Altamash</Text>
@@ -88,7 +97,11 @@ const Profile = () => {
             borderColor: "white"
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity
+             onPress={()=>naviagtion.navigate("camera",{
+              profileImage:true
+             })}
+          >
             <Avatar.Icon
               icon="camera"
               size={23}

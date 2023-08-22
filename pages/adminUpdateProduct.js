@@ -12,6 +12,7 @@ import { TextInput } from "react-native";
 import { Alert } from "react-native";
 import { Avatar, Button } from "react-native-paper";
 import ProductModel from "../components/productModel";
+import { useNavigation } from "@react-navigation/native";
 // import { launchImageLibrary } from "react-native-image-picker";
 
 const productSchema = Yup.object().shape({
@@ -29,12 +30,36 @@ const productSchema = Yup.object().shape({
     
 });
 
-const AdminUpdateProduct = ({ navigation }) => {
+const images=[
+  {
+    public_id: "etgrgeiteb73wk3ofqis",
+    url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691914272/etgrgeiteb73wk3ofqis.jpg",
+  },
+  {
+    public_id: "ags3orubcz6e5qj40b0y",
+    url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691916144/ags3orubcz6e5qj40b0y.jpg",
+  },
+  {
+    public_id: "etgrgeiteb73wk3ofqisrr",
+    url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691914272/etgrgeiteb73wk3ofqis.jpg",
+  },
+  {
+    public_id: "ags3orubcz6e5qj40b0yjie",
+    url: "https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691916144/ags3orubcz6e5qj40b0y.jpg",
+  },
+];
+
+const AdminUpdateProduct = () => {
   const [obsecureText, useObsecureText] = useState(false);
 
   const [category,setCategory]=useState(null);
+  
+  const navigation=useNavigation();
 
   console.log(obsecureText);
+
+  const productId="jckjsncjkdncnskjcds";
+
 
 
   const isLoadding=false;
@@ -78,8 +103,12 @@ const AdminUpdateProduct = ({ navigation }) => {
           <View className="rounded-full w-10 h-10 bg-green-500 absolute bottom-8 right-10 flex-row justify-center items-center">
           <TouchableOpacity
            activeOpacity={0.8}
+           onPress={()=>navigation.navigate("productImages",{
+            images:images,
+            id:productId
+           })}
           >
-          <Ionicons name="add-circle-outline" size={24} color="white" />
+            <MaterialCommunityIcons name="content-save-edit-outline" size={16} color="white" />
           </TouchableOpacity>
           </View>
          </View>

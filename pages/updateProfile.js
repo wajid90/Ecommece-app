@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Platform ,StatusBar} from 'react-native'
 import { Image } from "react-native";
 import { Entypo, FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -10,8 +10,16 @@ import { Alert } from "react-native";
 import { Avatar, Button } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native'
 
-const UpdateProfile = () => {
+const UpdateProfile = ({route}) => {
   const navigation=useNavigation();
+  
+  const [image,setImage]=useState("");
+
+
+  useEffect(()=>{
+    if(route.params?.image) setImage(route.params?.image);
+ },[route.params])
+
 
   const updateProfileSchema = Yup.object().shape({
     name: Yup.string()
@@ -89,10 +97,11 @@ const UpdateProfile = () => {
         </TouchableOpacity>
       </View>
    
-      <View className="w-[100%] h-[150px]  mx-2 flex-row justify-center">
-        <View className="w-[40%] h-[150px] mt-2">
+      <View className="w-[100%] h-[160px]  mx-2 flex-row justify-center">
+        <View className="w-[40%] h-[160px] mt-2">
           <Image
-            source={require("../assets/pexels-photo-220453.webp")}
+           source={image?{uri:image}:require("../assets/pexels-photo-220453.webp")}
+      
             style={{
               width: "100%",
               height: "90%",
@@ -114,7 +123,13 @@ const UpdateProfile = () => {
             borderColor: "white"
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={()=>navigation.navigate("camera",{
+                 updateProfile:true
+                })}
+                        
+          >
             <Avatar.Icon
               icon="camera"
               size={23}

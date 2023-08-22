@@ -4,7 +4,7 @@ import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native";
 import { Platform, StatusBar } from "react-native";
 import { Image } from "react-native";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
@@ -30,17 +30,22 @@ const productSchema = Yup.object().shape({
     
 });
 
-const AdminaddProduct = ({ navigation }) => {
+const AdminaddProduct = ({navigation,route}) => {
   const [obsecureText, useObsecureText] = useState(false);
 
   const [category,setCategory]=useState(null);
 
-  const navigation=useNavigation();
+  // const navigation=useNavigation();
+  const [image,setImage]=useState(null);
 
   console.log(obsecureText);
 
 
   const isLoadding=false;
+
+  useEffect(()=>{
+     if(route.params?.image) setImage(route.params?.image);
+  },[route.params])
 
   const inValidForm = () => {
     Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
@@ -68,7 +73,7 @@ const AdminaddProduct = ({ navigation }) => {
 
          >
          <Image
-            source={require("../assets/sign-up-concept-illustration_114360-7865.jpg")}
+            source={image?{uri:image}:require("../assets/sign-up-concept-illustration_114360-7865.jpg")}
             style={{
               width: "70%",
               height: 200,
@@ -78,12 +83,16 @@ const AdminaddProduct = ({ navigation }) => {
             }}
             className="rounded-lg"
           />
-          <View className="rounded-full w-10 h-10 bg-green-500 absolute bottom-8 right-10 flex-row justify-center items-center">
+          <View className="rounded-full w-8 h-8 bg-green-500 absolute bottom-8 right-10 flex-row justify-center items-center">
           <TouchableOpacity
            activeOpacity={0.8}
-           onPress={()=>navigation.nav}
+           onPress={()=>navigation.navigate("camera",{
+            newProduct:true
+           })}
+           
+           className="transition-transform active:scale-110"
           >
-          <Ionicons name="add-circle-outline" size={24} color="white" />
+         <Feather name="camera" size={16} color="white" />
           </TouchableOpacity>
           </View>
          </View>
@@ -239,7 +248,7 @@ const AdminaddProduct = ({ navigation }) => {
                     <View className="flex-row  items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
                     
                        <Button className="w-full"  textColor="gray">
-                         Select Category
+                       {category!==null?"Category Selected":  "Please Select Category"}
                        </Button>
                     
                     </View>
@@ -262,11 +271,10 @@ const AdminaddProduct = ({ navigation }) => {
                    }}
                 >
                 <Button
-                 className="px-4 py-1 bg-color1 mx-4 my-1 rounded-full"
+                 className="px-4 py-1 bg-color1 mx-4 mt-1 rounded-full"
                  textColor="white"
                  isValid={isValid}
-               
-                  lodder={isLoadding}
+                disabled={isLoadding}
                >
                   Add Product
                 </Button>
