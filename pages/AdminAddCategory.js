@@ -72,9 +72,9 @@ const AdminAddCategory = () => {
       
         flex: 1,
       }}
-      className="bg-gray-200"
+      className="bg-color1"
     >
-      <Header1 headertext="All Categories" />
+      <Header1 headertext="All Categories" cl={true} />
 
       <ScrollView showsVerticalScrollIndicator={false}
       >

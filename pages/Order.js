@@ -65,7 +65,7 @@ const orderData=[
 ]
 const Order = () => {
   const isLoading = false;
-  const isAdmin=true;
+  const isAdmin=false;
   const updateHandler=(id)=>{
     console.log("button pressed ...."+id);
   }

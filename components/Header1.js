@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 const Header1 = ({
   headertext="",
   emptyCart = false,
+  cl=false
 }) => {
   const navigation = useNavigation();
   return (
@@ -15,11 +16,13 @@ const Header1 = ({
           <Avatar.Icon
             size={40}
             icon="arrow-left"
-            color="black"
+            color={`${cl?"white":"black"}`}
             className="bg-transparent"
           />
         </TouchableOpacity>
-        <Text className="font-semibold text-[20px] flex-1 ml-5 text-black">
+        <Text className="font-semibold text-[20px] flex-1 ml-5"
+          style={{color:`${cl?"white":"black"}`}}
+        >
           {headertext}
         </Text>
         
@@ -29,7 +32,7 @@ const Header1 = ({
             <Avatar.Icon
               size={45}
               className="bg-transparent"
-              color="black"
+              color={`${cl?"white":"black"}`}
               icon={emptyCart ? "delete-outline" : "cart-outline"}
             />
           </TouchableOpacity>
