@@ -11,12 +11,17 @@ import { TextInput } from "react-native";
 import { Alert } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
+import { AuthLogin } from "../redux/Auth/userSlice";
+import { useDispatch} from "react-redux";
+import useCustomHook from "../components/CustomHook";
 
 const LoginPage = ({ navigation }) => {
   const [obsecureText, useObsecureText] = useState(true);
 
+  const dispatch=useDispatch();
 
-  const isLoadding=false;
+  const isLoadding=useCustomHook(navigation,dispatch,"profile");
+
   const signInSchma = Yup.object().shape({
     email: Yup.string()
       .email("Please Enter the Valid Email ...")
@@ -30,18 +35,6 @@ const LoginPage = ({ navigation }) => {
       ),
   });
 
-  const inValidForm = () => {
-    Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
-      {
-        text: "Cancel",
-        onPress: () => {},
-      },
-      {
-        text: "Continue",
-        onPress: () => {},
-      },
-    ]);
-  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -63,12 +56,6 @@ const LoginPage = ({ navigation }) => {
             }}
             className="w-[90%] flex-row justify-between mx-4 my-2"
           >
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              className="p-2 flex justify-center items-center  rounded-full w-10 h-10 bg-gray-200"
-            >
-              <Ionicons size={20} name="chevron-back" color="black" />
-            </TouchableOpacity>
           </View>
           <Text className="text-center font-bold text-gray-500 text-xl -mt-4">
             Login 
@@ -189,10 +176,20 @@ const LoginPage = ({ navigation }) => {
                   </View>
                 </View>
 
-              <TouchableOpacity>
+              <TouchableOpacity
+              
+                onPress={handleSubmit}
+               
+              >
                 <Button
+                loading={isLoadding}
                  className="px-4 py-2 bg-black/[400] mx-4 my-2 rounded-full "
-                 textColor="white"
+                 textColor={`${!isValid ? "black":"white"}`}
+                 style={{
+                  backgroundColor:`${!isValid ? "gray":"black"}`
+                  
+                }}
+                 
                >
                   Login
                 </Button>

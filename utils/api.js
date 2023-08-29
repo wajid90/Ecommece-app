@@ -1,0 +1,1 @@
+export const server="https://ecommerce-server-i9xu.onrender.com/api/v1"

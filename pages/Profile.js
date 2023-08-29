@@ -1,9 +1,14 @@
 import { View, Text, Platform, StatusBar, TouchableOpacity, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Avatar, Button, IconButton } from "react-native-paper";
+import { ActivityIndicator, Avatar, Button, IconButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "react-native";
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons, Octicons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { AuthLogout } from "../redux/Auth/userSlice";
+import useCustomHook from "../components/CustomHook";
+import Loader from "../components/Loader";
+import Footer from "../components/Footer";
 
 
 const Profile = ({route}) => {
@@ -12,12 +17,16 @@ const Profile = ({route}) => {
 
   const naviagtion=useNavigation();
 
+  const dispatch=useDispatch();
+
   useEffect(()=>{
     if(route.params?.image) setImage(route.params?.image);
  },[route.params])
 
-  const logoutHandler = () => {
+  const isLoadding=useCustomHook(naviagtion,dispatch,"login");
 
+  const logoutHandler = () => {
+     dispatch(AuthLogout());
   }
 
   return (
@@ -30,30 +39,10 @@ const Profile = ({route}) => {
     >
       <View className="flex-row justify-between items-center mx-4 my-2">
 
-        <TouchableOpacity onPress={() => naviagtion.goBack()}>
-          <Avatar.Icon
-            size={40}
-            icon="arrow-left"
-            color="black"
-            className="bg-transparent"
-          />
-        </TouchableOpacity>
-        <Text>My Profile</Text>
-
-        <TouchableOpacity >
-          <Avatar.Icon
-            size={40}
-            icon="content-save-settings-outline"
-            color="black"
-            className="bg-transparent"
-          />
-        </TouchableOpacity>
-
-
-
+       
 
       </View>
-      <View className="w-[95%] h-[150px]  mx-2 flex-row">
+       <View className="w-[95%] h-[150px]  mx-2 flex-row">
         <View className="w-[40%] h-[150px] mt-2">
           <Image
             source={image?{uri:image}:require("../assets/pexels-photo-220453.webp")}
@@ -181,20 +170,21 @@ const Profile = ({route}) => {
       </View>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={logoutHandler}
+        isLoadding={isLoadding}
+      >
       <View className="bg-white border border-gray-100 mx-3 my-2 flex-row  justify-between items-center">
         <View className="flex-row items-center  my-2 px-4 py-2">
-        <AntDesign name="logout" size={24} color="red" />
+       { isLoadding==true ?<ActivityIndicator size={20} />:<AntDesign name="logout" size={24} color="red" />} 
           <Text className="ml-4 font-semibold text-red-400">logout</Text>
         </View>
-       
-        
       </View>
       </TouchableOpacity>
       
 
       </ScrollView>
-
+      <Footer activeRoute={"profile"} />
     </View>
   );
 };
