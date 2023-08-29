@@ -30,10 +30,20 @@ import AdminAddCategory from "./AdminAddCategory";
 import AdminUpdateProduct from "./adminUpdateProduct";
 import CameraScreen from "./CameraScreen";
 import ProductImages from "./ProductImages";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { userLoadData } from "../redux/Auth/userSlice";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
+   const {user}=useSelector((state)=>state.auth);
+   console.log(user);
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    dispatch(userLoadData());
+  },[dispatch]);
   return (
+    
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{

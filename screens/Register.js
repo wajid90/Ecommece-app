@@ -1,25 +1,27 @@
 import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
+import Toast from 'react-native-toast-message';
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native";
 import { Platform, StatusBar } from "react-native";
 import { Image } from "react-native";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign, Entypo, FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import { TextInput } from "react-native";
-import { Alert } from "react-native";
 import { Avatar, Button } from "react-native-paper";
+import { AuthRegister } from "../redux/Auth/userSlice";
+import useCustomHook from "../components/CustomHook";
+import { useDispatch } from "react-redux";
+import mime from "mime";
 // import { launchImageLibrary } from "react-native-image-picker";
 
 const signUpSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Provide the Valid Name")
     .required("This field is required"),
-  location: Yup.string()
-    .min(3, "Provide the Valid Location")
-    .required("This field is required"),
+
   email: Yup.string()
     .email("Please enter a valid email")
     .required("This field is required"),
@@ -35,29 +37,30 @@ const signUpSchema = Yup.object().shape({
       /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
       "Password should contain at least one special character"
     ),
+   address: Yup.string()
+    .min(3, "Provide the Valid Location")
+    .required("This field is required"),
+   city:Yup.string()
+   .min(3, "Provide the Valid Location")
+   .required("This field is required"),
+   country:Yup.string()
+   .min(3, "Provide the Valid Location")
+   .required("This field is required"),
+   pinCode:Yup.number()
+   .required("This field is required"),
+  
 });
 
 const Register = ({ navigation, route }) => {
   const [obsecureText, useObsecureText] = useState(true);
-
+  const dispatch=useDispatch();
   const [image, setImage] = useState("");
-  const isLoadding = false;
   useEffect(() => {
     if (route.params?.image) setImage(route.params?.image);
   }, [route.params]);
 
-  const inValidForm = () => {
-    Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
-      {
-        text: "Cancel",
-        onPress: () => {},
-      },
-      {
-        text: "Continue",
-        onPress: () => {},
-      },
-    ]);
-  };
+  const isLoadding=useCustomHook(navigation,dispatch,"home");
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView>
@@ -115,26 +118,45 @@ const Register = ({ navigation, route }) => {
               <Ionicons size={20} name="chevron-back" color="black" />
             </TouchableOpacity>
           </View>
-          {/* <Text className="text-center font-bold text-gray-500 text-xl -mt-5 mb-3">
-            Unilimited Luxurius Furniture{" "}
-          </Text> */}
           <Formik
             initialValues={{
               name: "",
               email: "",
-              location: "",
               password: "",
+              address: "",
               city: "",
-              pinCode: "",
               country: "",
+              pinCode: "",
+           
             }}
             validationSchema={signUpSchema}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
-              dispatch(AuthRegister(values));
-              // setTimeout(() => {
-              //   resetForm();
-              // }, 200);
+        
+              if(image===""){
+                return Toast.show({
+                  type:"error",
+                  text1:"Image Is Required ..."
+                });
+              
+              }
+               const formData=new FormData();
+               formData.append("name",values.name);
+               formData.append("email",values.email);
+               formData.append("address",values.address);
+               formData.append("password",values.password);
+               formData.append("city",values.city);
+               formData.append("pinCode",values.pinCode);
+               formData.append("country",values.country);
+               formData.append("file",{
+                uri:image,
+                type:mime.getType(image),
+                name:image.split("/").pop()
+               });
+             //  console.log(formData);
+              dispatch(AuthRegister(formData));
+              setTimeout(() => {
+                resetForm();
+              }, 2000);
             }}
             className="flex flex-column gap-15"
           >
@@ -165,7 +187,6 @@ const Register = ({ navigation, route }) => {
                         }}
                       />
                       <TextInput
-                        type="name"
                         name="name"
                         placeholder="Enter Your Name .."
                         onFocus={() => setFieldTouched("name")}
@@ -174,6 +195,9 @@ const Register = ({ navigation, route }) => {
                         onBlur={() => setFieldTouched("name", "")}
                         autoCapitalize="none"
                         autoCorrect={false}
+                        style={{
+                          flex: 1,
+                        }}
                       />
                     </View>
                     <View className="w-[90%] mx-5">
@@ -205,7 +229,11 @@ const Register = ({ navigation, route }) => {
                         onBlur={() => setFieldTouched("email", "")}
                         autoCapitalize="none"
                         autoCorrect={false}
+                        style={{
+                          flex: 1,
+                        }}
                       />
+
                     </View>
                     <View className="w-[90%] mx-5">
                       {touched.email && errors.email && (
@@ -216,7 +244,7 @@ const Register = ({ navigation, route }) => {
                     </View>
                   </View>
                   <View className="w-full">
-                    <Text className="w-full ml-5 text-xs">Location</Text>
+                    <Text className="w-full ml-5 text-xs">Address</Text>
                     <View className="flex-row items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
                       <Ionicons
                         name="location"
@@ -227,14 +255,17 @@ const Register = ({ navigation, route }) => {
                         }}
                       />
                       <TextInput
-                        placeholder="Enter Your location .."
-                        onFocus={() => setFieldTouched("location")}
-                        value={values.location}
-                        onChangeText={handleChange("location")}
-                        onBlur={() => setFieldTouched("location", "")}
+                        placeholder="Enter Your Address .."
+                        onFocus={() => setFieldTouched("address")}
+                        value={values.address}
+                        onChangeText={handleChange("address")}
+                        onBlur={() => setFieldTouched("address", "")}
                         autoCapitalize="none"
                         autoCorrect={false}
                         focusable
+                        style={{
+                          flex: 1,
+                        }}
                       />
                     </View>
                     <View className="w-[90%] mx-5">
@@ -291,16 +322,10 @@ const Register = ({ navigation, route }) => {
                   <View className="w-full">
                     <Text className="w-full ml-5 text-xs">City</Text>
                     <View className="flex-row  items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
-                      <MaterialCommunityIcons
-                        name="lock-outline"
-                        size={24}
-                        color="gray"
-                        style={{
+                    <FontAwesome5 name="city" size={20} color="gray" style={{
                           marginRight: 10,
-                        }}
-                      />
+                        }} />
                       <TextInput
-                        secureTextEntry={obsecureText}
                         placeholder="Enter Your city .."
                         onFocus={() => setFieldTouched("city")}
                         value={values.city}
@@ -324,16 +349,12 @@ const Register = ({ navigation, route }) => {
                   <View className="w-full">
                     <Text className="w-full ml-5 text-xs">Zip Code</Text>
                     <View className="flex-row  items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
-                      <MaterialCommunityIcons
-                        name="lock-outline"
-                        size={24}
-                        color="gray"
-                        style={{
+                  
+                        <AntDesign name="qrcode"  size={20} color="gray" style={{
                           marginRight: 10,
-                        }}
-                      />
+                        }} />
                       <TextInput
-                        secureTextEntry={obsecureText}
+                      keyboardType={"number-pad"}
                         placeholder="Enter Your pinCode .."
                         onFocus={() => setFieldTouched("pinCode")}
                         value={values.pinCode}
@@ -357,16 +378,14 @@ const Register = ({ navigation, route }) => {
                   <View className="w-full">
                     <Text className="w-full ml-5 text-xs">Country</Text>
                     <View className="flex-row  items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
-                      <MaterialCommunityIcons
-                        name="lock-outline"
-                        size={24}
+                      
+                    <Entypo name="location" size={24}
                         color="gray"
                         style={{
                           marginRight: 10,
-                        }}
-                      />
+                        }} />
+                     
                       <TextInput
-                        secureTextEntry={obsecureText}
                         placeholder="Enter Your country .."
                         onFocus={() => setFieldTouched("country")}
                         value={values.country}
@@ -389,14 +408,19 @@ const Register = ({ navigation, route }) => {
                   </View>
                 </View>
                 <TouchableOpacity
-                  onPress={isValid ? handleSubmit : inValidForm}
+                  onPress={handleSubmit}
+                  disabled={!isValid}
                   activeOpacity={0.9}
                 >
                   <Button
                     className="px-4 py-2 bg-color1 mx-4 my-1 rounded-full "
-                    textColor="white"
                     isValid={isValid}
-                    lodder={isLoadding}
+                    loading={isLoadding}
+                    textColor={`${!isValid ? "black":"white"}`}
+                    style={{
+                     backgroundColor:`${!isValid ? "gray":"#c70049"}`
+                     
+                   }}
                   >
                     Register
                   </Button>
@@ -408,8 +432,6 @@ const Register = ({ navigation, route }) => {
                   <Button
                     className="px-4 py-2 bg-black mx-4 my-1 rounded-full "
                     textColor="white"
-                    isValid={isValid}
-                    lodder={isLoadding}
                   >
                     Login
                   </Button>
