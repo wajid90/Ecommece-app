@@ -11,12 +11,18 @@ import { TextInput } from "react-native";
 import { Alert } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
+import  { useCustomHook2 } from "../components/CustomHook";
+import { changePassword } from "../redux/Auth/userSlice";
 
 const ChangePassword = ({ navigation }) => {
   const [obsecureText, useObsecureText] = useState(true);
 
+  const dispatch=useDispatch();
 
-  const isLoadding=false;
+  const isLoadding=useCustomHook2(dispatch);
+
+
   const passwordSchma = Yup.object().shape({
     password: Yup.string()
     .required("Please Enter your password")
@@ -29,21 +35,9 @@ const ChangePassword = ({ navigation }) => {
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      ),
+      )
   });
 
-  const inValidForm = () => {
-    Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
-      {
-        text: "Cancel",
-        onPress: () => {},
-      },
-      {
-        text: "Continue",
-        onPress: () => {},
-      },
-    ]);
-  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -82,7 +76,10 @@ const ChangePassword = ({ navigation }) => {
             }}
             validationSchema={passwordSchma}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
+              dispatch(changePassword({
+                oldPassword:values.password,
+                newPassword:values.confirmPassword
+              }));
               setTimeout(() => {
                 resetForm();
               }, 200);
@@ -104,7 +101,7 @@ const ChangePassword = ({ navigation }) => {
               <>
                 <View className="w-full">
                 <View className="w-full  mb-2">
-                    <Text className="w-full ml-5">Password</Text>
+                    <Text className="w-full ml-5">Old Password</Text>
                     <View className="flex-row  items-center mx-4 my-2 p-4 bg-gray-200  shadow-lg rounded-lg">
                       <MaterialCommunityIcons
                         name="lock-outline"
@@ -148,7 +145,7 @@ const ChangePassword = ({ navigation }) => {
          
                   </View>
                   <View className="w-full  mb-2">
-                    <Text className="w-full ml-5">Confirm Password</Text>
+                    <Text className="w-full ml-5">New Password</Text>
                     <View className="flex-row  items-center mx-4 my-2 p-4 bg-gray-200  shadow-lg rounded-lg">
                       <MaterialCommunityIcons
                         name="lock-outline"
@@ -192,10 +189,16 @@ const ChangePassword = ({ navigation }) => {
                   </View>
                 </View>
 
-              <TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.9}
+                className="transition-transform active:scale-95"
+                onPress={handleSubmit}
+              >
                 <Button
+                 loading={isLoadding}
                  className="px-4 py-2 bg-black/[400] mx-4 my-2 rounded-full "
                  textColor="white"
+                 
                >
                   change
                 </Button>

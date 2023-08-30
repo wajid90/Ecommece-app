@@ -36,8 +36,41 @@ export const AuthLogin = createAsyncThunk(
       }
     }
   );
-  
 
+  export const changePassword = createAsyncThunk(
+    "user/changePassword",
+    async (data,thunkAPI) => {
+
+      try {
+        return await authService.updatePassword(data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+  export const updateProfileData = createAsyncThunk(
+    "user/updateProfile",
+    async (data,thunkAPI) => {
+
+      try {
+        return await authService.updateProfile(data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+  export const updateProfilePicData = createAsyncThunk(
+    "user/updateProfilePic",
+    async (data,thunkAPI) => {
+
+      try {
+        return await authService.updateProfilePic(data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+  
   
 
   export const AuthRegister = createAsyncThunk(
@@ -94,6 +127,32 @@ export const AuthLogin = createAsyncThunk(
           state.isLoadding = false;
           state.isAuthenticated=false
           state.user = null;
+        }).addCase(updateProfileData.pending, (state) => {
+          state.isLoadding = true;
+        })
+        .addCase(updateProfileData.fulfilled, (state, action) => {
+          state.isLoadding = false;
+          state.isSuccess=true
+          state.successMessage = action.payload.message;
+        })
+        .addCase(updateProfileData.rejected, (state,action) => {
+          state.isLoadding = false;
+          state.isError=true
+          state.errorMessage = action.payload.response.data.message;
+  
+        }).addCase(updateProfilePicData.pending, (state) => {
+          state.isLoadding = true;
+        })
+        .addCase(updateProfilePicData.fulfilled, (state, action) => {
+          state.isLoadding = false;
+          state.isSuccess=true
+          state.successMessage = action.payload.message;
+        })
+        .addCase(updateProfilePicData.rejected, (state,action) => {
+          state.isLoadding = false;
+          state.isError=true
+          state.errorMessage = action.payload.response.data.message;
+  
         })
         .addCase(AuthRegister.pending, (state) => {
           state.isLoadding = true;
@@ -115,7 +174,8 @@ export const AuthLogin = createAsyncThunk(
           state.isLoadding = true;
         })
         .addCase(AuthLogout.fulfilled, (state, action) => {
-          state.isLoadding = false;
+          state.isLoadding=false
+          state.islogout= true;
           state.isAuthenticated=false;
           state.isSuccess=true;
           state.successMessage=action.payload.message;
@@ -123,7 +183,20 @@ export const AuthLogin = createAsyncThunk(
         })
         .addCase(AuthLogout.rejected, (state,action) => {
           state.isLoadding = false;
+          state.islogout = false;
           state.isAuthenticated=true;
+          state.isError=true;
+          state.errorMessage=action.payload.response.data.message;
+        }).addCase(changePassword.pending, (state) => {
+          state.isLoadding = true;
+        })
+        .addCase(changePassword.fulfilled, (state, action) => {
+          state.isLoadding = false;
+          state.isSuccess=true;
+          state.successMessage=action.payload.message;
+        })
+        .addCase(changePassword.rejected, (state,action) => {
+          state.isLoadding = false;
           state.isError=true;
           state.errorMessage=action.payload.response.data.message;
         }).addCase("clearError",(state)=>{
@@ -139,4 +212,4 @@ export const AuthLogin = createAsyncThunk(
   
   export default authSlice.reducer;
 
-
+  

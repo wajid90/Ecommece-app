@@ -21,7 +21,7 @@ const login = async ({email,password}) => {
       withCredentials:true
     });
     if (responce.data) {
-      return responce.data;
+      return responce.data.user;
     }
   };
 
@@ -37,6 +37,43 @@ const login = async ({email,password}) => {
     }
   };
 
+  const updatePassword = async (userData) => {
+    const reponces = await axios.put(`${server}/user/changepassword`, userData,{
+      headers:{
+        "Content-Type": "application/json",
+      },
+      withCredentials:true
+    });
+    if (reponces.data) {
+      return reponces.data;
+    }
+  };
+
+  const updateProfile = async (userData) => {
+    const reponces = await axios.put(`${server}/user/updateprofile`, userData,{
+      headers:{
+        "Content-Type": "application/json",
+      },
+      withCredentials:true
+    });
+    if (reponces.data) {
+      return reponces.data;
+    }
+  };
+
+  const updateProfilePic = async (userData) => {
+    const reponces = await axios.put(`${server}/user/updatepic`, userData,{
+      headers:{
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials:true
+    });
+    if (reponces.data) {
+      return reponces.data;
+    }
+  };
+
+
   const logout = async () => {
     const reponces = await axios.get(`${server}/user/logout`,{
       withCredentials:true
@@ -51,6 +88,9 @@ const login = async ({email,password}) => {
     login,
     register,
     loadUserData,
-    logout
+    logout,
+    updatePassword,
+    updateProfile,
+    updateProfilePic
   };
   export default authService;

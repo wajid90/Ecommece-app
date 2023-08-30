@@ -66,6 +66,8 @@ const Main = () => {
           <Stack.Screen name="resetPassword" component={ResetPassword} />
           <Stack.Screen name="changePassword" component={ChangePassword} />
           <Stack.Screen name="updateProfile" component={UpdateProfile} />
+          <Stack.Screen name="profileImage" component={Profile} />
+          
           <Stack.Screen name="order" component={Order} />
 
 

@@ -52,7 +52,7 @@ const ProductCard = ({
             position: "absolute",
             bottom: 0,
             left: 0,
-            backgroundColor: i % 2 === 0 ? "white" : "#c70049",
+            backgroundColor: i % 2 === 0 ? "white" : "black",
             width: "100%",
             borderBottomLeftRadius: 20,
             borderBottomRightRadius: 20,
@@ -62,7 +62,7 @@ const ProductCard = ({
           <Button>
             <Text
               style={{
-                color: i % 2 === 0 ? "#c70049" : "white",
+                color: i % 2 === 0 ? "black" : "white",
               }}
             >
               Add To Cart

@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import { StatusBar } from "react-native";
 import Header1 from "../components/Header1";
 import { useNavigation } from "@react-navigation/native";
+import Loader from "../components/Loader";
 
 const products = [
   {
@@ -215,17 +216,17 @@ const AdminGetAllProducts = () => {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         {isLoading === true ? (
-          <View>Loading</View>
+          <Loader/>
         ) : (
           products?.map((item, index) => (
             <>
               <TouchableOpacity
-                key={index}
+             
                 onPress={() => setToggleHandler(item._id)}
                 activeOpacity={0.8}
                 className="transition duration-200 delay-100"
               >
-                <View className="bg-gray-200 mx-3 flex-row my-2 p-2">
+                <View className="bg-gray-200 mx-3 flex-row my-2 p-2"    key={index}>
                   <Image
                     source={{
                       uri: item.images[0].url,

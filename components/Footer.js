@@ -29,9 +29,9 @@ const Footer = ({ activeRoute = "home" }) => {
     }
   };
   return (
-   isLoadding===false &&  <View
+   <View
    style={{
-     backgroundColor: "#c70049",
+     backgroundColor: "black",
      borderTopLeftRadius: 120,
      borderTopRightRadius: 120,
      position: "absolute",
@@ -56,7 +56,7 @@ const Footer = ({ activeRoute = "home" }) => {
          color="white"
          size={50}
          style={{
-           backgroundColor: "#c70049",
+           backgroundColor: "black",
          }}
          icon={activeRoute === "cart" ? "shopping" : "shopping-outline"}
        />
@@ -69,7 +69,7 @@ const Footer = ({ activeRoute = "home" }) => {
          color="white"
          size={50}
          style={{
-           backgroundColor: "#c70049",
+           backgroundColor: "black",
          }}
          icon={activeRoute  === "profile" ? "account" : isAuthenticated === false ?"login":"account"}
        />
@@ -96,7 +96,7 @@ const Footer = ({ activeRoute = "home" }) => {
          color="white"
          size={50}
          style={{
-           backgroundColor: "#c70049",
+           backgroundColor: "black",
          }}
          icon={activeRoute === "home" ? "home" : "home-outline"}
        />

@@ -12,7 +12,11 @@ import { TextInput } from "react-native";
 import { Alert } from "react-native";
 import { Avatar, Button } from "react-native-paper";
 import ProductModel from "../components/productModel";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
+import Toast from "react-native-toast-message";
+import { createProducts, resetState } from "../redux/Products/productSlice";
+import mime from "mime";
+import { useDispatch, useSelector } from "react-redux";
 // import { launchImageLibrary } from "react-native-image-picker";
 
 const productSchema = Yup.object().shape({
@@ -35,31 +39,38 @@ const AdminaddProduct = ({navigation,route}) => {
 
   const [category,setCategory]=useState(null);
 
-  // const navigation=useNavigation();
-  const [image,setImage]=useState(null);
+  const dispatch =useDispatch();
+  const isfocused=useIsFocused();
 
-  console.log(obsecureText);
+   const {isError,
+    isSuccess,
+    isLoadding,createdProduct,message}=useSelector((state)=>state.products);
 
+  const [image,setImage]=useState("");
 
-  const isLoadding=false;
+  // console.log(obsecureText);
+  useEffect(()=>{
+    if(isError){
+      Toast.show({
+        type:"error",
+        text1:message
+      })
+      
+    }
+    if(isSuccess===true  && createdProduct!==null){
+       Toast.show({
+        type:"success",
+        text1:createdProduct?.message
+      })
+     
+
+    }
+    dispatch(resetState());
+  },[isError,isSuccess,dispatch,createdProduct]);
 
   useEffect(()=>{
      if(route.params?.image) setImage(route.params?.image);
   },[route.params])
-
-  const inValidForm = () => {
-    Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
-      {
-        text: "Cancel",
-        onPress: () => {},
-      },
-      {
-        text: "Continue",
-        onPress: () => {},
-      },
-    ]);
-  };
-  console.log(category);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} 
@@ -120,15 +131,39 @@ const AdminaddProduct = ({navigation,route}) => {
               description: "",
               price: "",
               stock: "",
-              category:"",
             }}
             validationSchema={productSchema}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
-              dispatch(AuthRegister(values));
-              // setTimeout(() => {
-              //   resetForm();
-              // }, 200);
+
+
+              if(category===null){
+                return Toast.show({
+                  type:"error",
+                  text1:"Category is Required ..."
+                });
+              }
+              if(image===""){
+                return Toast.show({
+                  type:"error",
+                  text1:"Image is Required ..."
+                });
+              }
+              const formData=new FormData();
+              formData.append("name",values.name);
+              formData.append("description",values.description);
+              formData.append("price",values.price);
+              formData.append("stock",values.stock);
+              formData.append("category",category);
+              formData.append("file",{
+               uri:image,
+               type:mime.getType(image),
+               name:image.split("/").pop()
+              });
+             dispatch(createProducts(formData));
+              
+              setTimeout(() => {
+                resetForm();
+              }, 200);
             }}
             className="flex flex-column gap-15"
           >
@@ -200,6 +235,7 @@ const AdminaddProduct = ({navigation,route}) => {
                       <TextInput
                         type="number"
                         name="price"
+                        keyboardType="decimal-pad"
                         placeholder="Enter Your Price .."
                         onFocus={() => setFieldTouched("price")}
                         value={values.email}
@@ -222,6 +258,7 @@ const AdminaddProduct = ({navigation,route}) => {
                     <View className="flex-row items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
                      
                       <TextInput
+                      keyboardType="decimal-pad"
                         placeholder="Enter Your Stock .."
                         onFocus={() => setFieldTouched("stock")}
                         value={values.stock}
@@ -253,32 +290,28 @@ const AdminaddProduct = ({navigation,route}) => {
                     
                     </View>
                     </TouchableOpacity>
-                    <View className="w-[90%] mx-5">
-                      {category===null && (
-                        <Text className="text-xs -mt-2 text-red-700">
-                          {errors.stock}
-                        </Text>
-                      )}
-                    </View>
+                  
                   </View>
 
                 </View>
-                <TouchableOpacity
-                   onPress={isValid ? handleSubmit : inValidForm}
-                   activeOpacity={0.9}
-                   contentContainerStyle={{
-                    width:"100%"
-                   }}
+                 <TouchableOpacity
+                  onPress={handleSubmit}
+                  disabled={!isValid}
+                  activeOpacity={0.9}
                 >
-                <Button
-                 className="px-4 py-1 bg-color1 mx-4 mt-1 rounded-full"
-                 textColor="white"
-                 isValid={isValid}
-                disabled={isLoadding}
-               >
-                  Add Product
-                </Button>
-              </TouchableOpacity>
+                  <Button
+                    className="px-4 py-2 bg-color1 mx-4 my-1 rounded-full "
+                    isValid={isValid}
+                    loading={isLoadding}
+                    textColor={`${!isValid ? "black":"white"}`}
+                    style={{
+                     backgroundColor:`${!isValid ? "gray":"#c70049"}`
+                     
+                   }}
+                  >
+                    Add Product
+                  </Button>
+                </TouchableOpacity>
               </>
             )}
           </Formik>

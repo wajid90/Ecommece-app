@@ -13,6 +13,10 @@ import CaroselCartItem from "../components/CaroselCartItem";
 import { Avatar } from "react-native-paper";
 import CartButton from "../components/CartButton";
 import Toast from 'react-native-toast-message';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSingleProductData } from "../redux/Products/productSlice";
+import { useIsFocused } from "@react-navigation/native";
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
@@ -35,9 +39,23 @@ const images = [
   },
 ];
 
-const ProductDetaile = ({ route: { params } }) => {
+const ProductDetaile = ({ route}) => {
   const isCarosel = useRef(null);
   const [quantity,setQuantity]=useState(1);
+  const isfocused=useIsFocused();
+
+  const {singleProduct,isLoadding}=useSelector((state)=>state.products);
+  //  console.log("this Is my single product ..."+singleProduct.product.description);
+
+   console.log(route.params.id);
+
+   const dispatch=useDispatch();
+  useEffect(()=>{
+     dispatch(getSingleProductData(route.params.id));
+  },[dispatch,route.params,isfocused]);
+
+
+  
   const stock=5;
   const incrementHandler=()=>{
    if(quantity>=stock) return Toast.show({
@@ -64,11 +82,7 @@ const ProductDetaile = ({ route: { params } }) => {
       text1: 'Item Add To Cart',
     });
   }
-  const name = "Macbook Pro";
-  const price = 12000;
-  const desc =
-    "macOS is the most advanced desktop operating system in the world. macOS Ventura makes the things you do most on Mac even better, so you can work smarter, play harder and go further macOS is the most advanced desktop operating system in the world. macOS Ventura makes the things you do most on Mac even better, so you can work smarter, play harder and go further.";
-  return (
+   return (
     <View
       style={{
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
@@ -81,7 +95,7 @@ const ProductDetaile = ({ route: { params } }) => {
       <Carousel
         layout="default"
         ref={isCarosel}
-        data={images}
+        data={singleProduct?.product?.images}
         renderItem={CaroselCartItem}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={ITEM_WIDTH}
@@ -95,42 +109,40 @@ const ProductDetaile = ({ route: { params } }) => {
           borderTopLeftRadius: 55,
           borderTopRightRadius: 55,
         }}
-        className="bg-color1"
+        className="bg-white"
       >
         <View className="flex-row justify-between items-center mx-2 my-2">
-          <Text className="font-bold text-[16px] text-white">{name}</Text>
-          <Text className="font-bold text-[16px] text-white">₹ {price}</Text>
+          <Text className="font-bold text-[16px] text-black">{singleProduct?.product?.name}</Text>
+          <Text className="font-bold text-[16px] text-black">₹ {singleProduct?.product?.price}</Text>
         </View>
-        <View className="mx-2 my-2">
-          <Text className="font-bold text-[16px] text-white">Description</Text>
-          <Text
+        <View className="mx-2 my-5">
+                   <Text
             numberOfLines={9}
             style={{
               letterSpacing: 1,
               lineHeight: 20,
               marginVertical: 6,
             }}
-            className="text-[14px] text-white"
+            className="text-[14px] text-black"
           >
-            {desc}
+            {singleProduct?.product?.description}
           </Text>
         </View>
 
         <View className="flex-row items-center justify-between  my-1">
           <View className="flex-row items-center mx-3">
-            <Text className="text-[14px] text-white flex-1">Quantity</Text>
+            <Text className="text-[14px] text-black flex-1">{singleProduct?.product?.quantity}</Text>
             <TouchableOpacity 
              onPress={decrementHandler}
             activeOpacity={9}>
               <Avatar.Icon
                 icon="minus"
                 color="black"
-                backgroundColor="white"
                 size={27}
-                className="flex-row mr-2 justify-center items-center"
+                className="flex-row mr-2 justify-center items-center bg-gray-300"
               />
             </TouchableOpacity>
-            <View className="flex-row  mr-2 justify-center items-center w-7 h-7 rounded-full bg-white">
+            <View className="flex-row  mr-2 justify-center items-center w-7 h-7 rounded-full bg-gray-200">
               <Text>{quantity}</Text>
             </View>
             <TouchableOpacity activeOpacity={9}
@@ -139,9 +151,9 @@ const ProductDetaile = ({ route: { params } }) => {
               <Avatar.Icon
                 icon="plus"
                 color="black"
-                backgroundColor="white"
+               
                 size={27}
-                className="flex-row mr-2 justify-center items-center"
+                className="flex-row mr-2 justify-center items-center bg-gray-300"
               />
             </TouchableOpacity>
 

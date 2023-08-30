@@ -32,9 +32,9 @@ const useCustomHook = (navigation,dispatch,navigateTo="login") => {
             type:"success",
             text1:successMessage
           })
+          
           dispatch({
             type:"clearSuccess",
-            text1:errorMessage
           });
           dispatch(userLoadData());
         }
@@ -43,4 +43,45 @@ const useCustomHook = (navigation,dispatch,navigateTo="login") => {
       return isLoadding;
 }
 
+
+const useCustomHook2 = (dispatch,navigation,navigateTo,func) => {
+    const {  isError,
+        isSuccess,
+        isLoadding,
+        isAuthenticated,
+        successMessage,
+        errorMessage
+      }=useSelector((state)=>state.auth);
+    
+      useEffect(()=>{
+        if(isError){
+          Toast.show({
+            type:"error",
+            text1:errorMessage
+          })
+          dispatch({
+            type:"clearError"
+          });
+        }
+        if(isSuccess){
+          
+          Toast.show({
+            type:"success",
+            text1:successMessage
+          })
+          
+          dispatch({
+            type:"clearSuccess",
+            text1:errorMessage
+          });
+
+          navigateTo && navigation.navigate(navigateTo);
+          func && dispatch(func());
+        }
+      },[isError,isSuccess,dispatch]);
+
+      return isLoadding;
+}
+
+export {useCustomHook2};
 export default useCustomHook

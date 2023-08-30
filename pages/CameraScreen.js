@@ -12,10 +12,6 @@ const CameraScreen = ({navigation,route}) => {
   const [camera, setCamera] = useState(null);
   const [imagePath,setImagePath]=useState("");
   const [imagePadding, setImagePadding] = useState(0);
-  const [ratio, setRatio] = useState('4:3');  // default is 4:3
-  const { height, width } = Dimensions.get('window');
-  const screenRatio = height / width;
-  const [isRatioSet, setIsRatioSet] =  useState(false);
 
   
 
@@ -44,12 +40,12 @@ const CameraScreen = ({navigation,route}) => {
             image:data.assets[0].uri
         })
     }
-    if(route.params?.profileImage){
+    if(route.params.updateProfile){
         return navigation.navigate("profile",{
             image:data.assets[0].uri
         })
     }
-    if(route.params?.updateProfile){
+    if(route.params.updateProfile){
         return navigation.navigate("updateProfile",{
             image:data.assets[0].uri
         })
@@ -60,53 +56,10 @@ const CameraScreen = ({navigation,route}) => {
     }
 
   };
-  const prepareRatio = async () => {
-    let desiredRatio = '4:3'; 
-    if (Platform.OS === 'android') {
-      const ratios = await camera.getSupportedRatiosAsync();
-
-      let distances = {};
-      let realRatios = {};
-      let minDistance = null;
-
-      for (const ratio of ratios) {
-        const parts = ratio.split(':');
-        const realRatio = parseInt(parts[0]) / parseInt(parts[1]);
-        realRatios[ratio] = realRatio;
-        const distance = screenRatio - realRatio; 
-        distances[ratio] = realRatio;
-        if (minDistance == null) {
-          minDistance = ratio;
-        } else {
-          if (distance >= 0 && distance < distances[minDistance]) {
-            minDistance = ratio;
-          }
-        }
-      }
-      desiredRatio = minDistance;
-      const remainder = Math.floor(
-        (height - realRatios[desiredRatio] * width) / 2
-      );
-
-      setImagePadding(remainder);
-      setRatio(desiredRatio);
-      setIsRatioSet(true);
-    }
-  };
-  const setCameraReady = async() => {
-    if (!isRatioSet) {
-      await prepareRatio();
-    }
-  };
-
 
   const clickHandler = async() => {
 
-    const data=await camera.takePictureAsync({
-        allowsEditing:true,
-        aspect:[4,3],
-        quality:1
-    });
+    const data=await camera.takePictureAsync();
 
     console.log(data);
     if(route.params?.newProduct){
@@ -119,7 +72,7 @@ const CameraScreen = ({navigation,route}) => {
             image:data.uri
         })
     }
-    if(route.params?.profileImage){
+    if(route.params?.updateProfile){
         return navigation.navigate("profile",{
             image:data.uri
         })
@@ -163,8 +116,7 @@ const CameraScreen = ({navigation,route}) => {
           flex: 1,
           aspectRatio: 1,
         }}
-        onCameraReady={setCameraReady}
-        ratio={ratio}
+        ratio={"1:1"}
         ref={(e) => setCamera(e)}
       />
       <View
