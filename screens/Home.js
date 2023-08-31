@@ -12,33 +12,69 @@ import Header from "../components/Header";
 import { Avatar, Button } from "react-native-paper";
 import SearchModel from "./SearchModel";
 import ProductCard from "../components/ProductCart";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getAllCategories, getAllproducts } from "../redux/Products/productSlice";
+import { getAdminAllproducts, getAllCategories, getAllproducts } from "../redux/Products/productSlice";
 import Loader from "../components/Loader";
+import Toast  from "react-native-toast-message";
+import { addToCart } from "../redux/Auth/userSlice";
 
 const Home = () => {
-  const [category, setCategory] = useState("1");
+  const [category, setCategory] = useState("");
+  const [categoryName, setCategoryName] = useState("");
+
   const [activeSearch, setActiveSearch] = useState(false);
   const [activeSearchQuery, setActiveSearchQuery] = useState("");
   const navigation = useNavigation();
 
   const {categories,products,isLoadding}=useSelector((state)=>state.products);
-  const categoryHandler = (id) => {
-    setCategory(id);
+  const categoryHandler = (catId,catName) => {
+    setCategoryName(catName);
+    setCategory(catId)
   };
-
-  const addToCartHandler = (id) => {
-    console.log("add to cart" + id);
+  console.log("this is my category :----"+category);
+  const isfocused=useIsFocused();
+  const addToCartHandler = ({id,name,stock,price,image}) => {
+   
+    if(stock==0){
+      Toast.show({
+        type:"error",
+        text1:"Product Out of Stock ....."
+      })
+    }
+      dispatch(addToCart({
+          product:id,
+          name:name,
+          stock:stock,
+          price:price,
+          image:image,
+          quantity:1
+      }));
+      Toast.show({
+        type:"success",
+        text1:"Product Add to cart"
+      })
   };
    
   const dispatch=useDispatch();
   useEffect(()=>{
-     dispatch(getAllproducts());
-     dispatch(getAllCategories());
-  },[dispatch]);
+    dispatch(getAllCategories());
+ },[]);
+// dispatch(getAllproducts());
+  useEffect(()=>{
+     const data=setTimeout(()=>{
+      dispatch(getAdminAllproducts({
+        keyword:activeSearchQuery,
+        category:category
+      }));
+    },500);
+
+    return ()=> clearInterval(data);
+  },[dispatch,activeSearchQuery,category,isfocused]);
+
+
 
   return (
     <>
@@ -47,6 +83,7 @@ const Home = () => {
           activeSearchQuery={activeSearchQuery}
           setActiveSearchQuery={setActiveSearchQuery}
           setActiveSearch={setActiveSearch}
+          category={category}
           products={products}
         />
       )}
@@ -81,7 +118,7 @@ const Home = () => {
                   backgroundColor:
                     category === item._id ? "#c70049" : "#E2E8F0",
                 }}
-                onPress={() => categoryHandler(item._id)}
+                onPress={() => categoryHandler(item._id,item.category)}
                 className={`my-4 mx-[4]  shadow`}
               >
                 <Text

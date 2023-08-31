@@ -10,7 +10,8 @@ const initialState={
   errorMessage:"",
   successMessage:"",
   isLoadding: false,
-  isAuthenticated:false
+  isAuthenticated:false,
+  cartItems:[]
 }
   
 export const AuthLogin = createAsyncThunk(
@@ -97,7 +98,33 @@ export const AuthLogin = createAsyncThunk(
   export const authSlice = createSlice({
     name: "auth",
     initialState:initialState,
-    reducers: {},
+    reducers: {
+      addToCart:(state,action)=>{
+        const item=action.payload;
+
+        const isExist=state.cartItems.find((i)=>i.product===item.product);
+        if(isExist){
+          state.cartItems=state.cartItems.filter((i)=>i.product===isExist.product?item:i);
+          
+          for( let i=0;i<state.cartItems.length;i++){
+            if(state.cartItems[i].product===isExist.product){
+              state.cartItems[i]=item;
+            }
+          }
+        }else{
+           state.cartItems.push(item);
+        }
+      },
+      removeFromCart:(state,action)=>{
+        const id=action.payload;
+        state.cartItems=state.cartItems.filter((i)=>i.product!==id);
+
+      },
+      emptyCartsData:(state)=>{
+        state.cartItems=[];
+      }
+
+    },
     extraReducers: (builder) => {
       builder
         .addCase(AuthLogin.pending, (state) => {
@@ -209,7 +236,7 @@ export const AuthLogin = createAsyncThunk(
         })
     },
   });
-  
+  export const {addToCart,removeFromCart,emptyCartsData} = authSlice.actions;
   export default authSlice.reducer;
 
   

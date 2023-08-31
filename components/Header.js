@@ -2,6 +2,9 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Avatar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyCartData } from "../redux/Cart/cartSlice";
+import { emptyCartsData } from "../redux/Auth/userSlice";
 
 const Header = ({
   back,
@@ -15,6 +18,13 @@ const Header = ({
     setActiveSearchQuery("");
     setActiveSearch(false);
   };
+  const {user}=useSelector((state)=>state.auth);
+  const dispatch=useDispatch();
+
+  const emptyCartHandler=()=>{
+    dispatch(emptyCartsData())
+  }
+
   return (
     <View className="flex-row items-center justify-between px-2 py-2">
       <View className="flex-row items-center flex-1 pl-1">
@@ -24,7 +34,7 @@ const Header = ({
           >
             <Avatar.Image
               size={40}
-              source={require("../assets/pexels-photo-220453.webp")}
+              source={user?{uri:user?.avatar?.url}:require("../assets/pexels-photo-220453.webp")}
             />
           </TouchableOpacity>
         ) : (
@@ -53,7 +63,7 @@ const Header = ({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={emptyCart ? emptyCart : () => navigation.navigate("cart")}
+            onPress={emptyCart ? emptyCartHandler: () => navigation.navigate("cart")}
           >
             <Avatar.Icon
               size={45}

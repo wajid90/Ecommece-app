@@ -4,59 +4,21 @@ import Header1 from '../components/Header1'
 import ConfirmOrderItem from '../components/ConfirmOrderItem'
 import { Button } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
-const itemData=[
-    {
-      id:"122",
-      name:"MaceBook 1",
-      image:"https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691916144/ags3orubcz6e5qj40b0y.jpg",
-      product:"123445jsdnckjsdnxasxs",
-      stock:3,
-      price:34323,
-      quantity:3,
-    },
-    { id:"123",
-      name:"MaceBook 2",
-      image:"https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691913345/qsdcnm2bib7usjtm2srb.jpg",
-      product:"123445jsdnckjsdnxaxs",
-      stock:3,
-      price:341323,
-      quantity:2,
-    }
-    ,  {
-      id:"124",
-      name:"MaceBook 3",
-      image:"https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691913345/qsdcnm2bib7usjtm2srb.jpg",
-      product:"123445jsdnckjsdnaspoas",
-      stock:3,
-      price:34323,
-      quantity:3,
-    },  {
-      id:"125",
-      name:"MaceBook 4",
-      image:"https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691914272/etgrgeiteb73wk3ofqis.jpg",
-      product:"123445jsdnckjsdnjkbckjsa",
-      stock:3,
-      price:34334,
-      quantity:7,
-    },
-    {
-      id:"126",
-      name:"MaceBook 4",
-      image:"https://res.cloudinary.com/dtcwpe8ig/image/upload/v1691914272/etgrgeiteb73wk3ofqis.jpg",
-      product:"123445jsdnckjsdnjkbckjsa",
-      stock:3,
-      price:34334,
-      quantity:7,
-    }
-  ]
 
 const ConfirmOrder = () => {
-    const itemPrice=4000;
-    const shippinfPrice=200;
-    const taxprice=0.18*itemPrice;
+  const {cartItems}=useSelector((state)=>state.auth);
+    const [itemPrice]=useState(cartItems.reduce((prev,curr)=>prev+curr.quantity*curr.price,0));
+
+    const [shippinfPrice]=useState(itemPrice>10000?0:200);
+    const [taxprice]=useState(Number((0.18*itemPrice).toFixed()));
+    const [totalAmount]=useState(itemPrice+shippinfPrice+taxprice);
 
     const navigation=useNavigation();
+
+    
   return (
     <View
       style={{
@@ -69,14 +31,20 @@ const ConfirmOrder = () => {
       <View
       style={{
         paddingVertical:5,
-        flex:1  
+        flex:1,        
+        marginRight:4,
+        marginLeft:2,
+        flex:1,
+
       }}
+      className="bg-gray-100"
     >
+
       <ScrollView
         showsVerticalScrollIndicator={false}
       >
        {
-        itemData.map((item,index)=>(
+        cartItems.length>0 && cartItems.map((item,index)=>(
           <ConfirmOrderItem item={item} 
             key={index}
             product={item.product}
@@ -105,10 +73,10 @@ const ConfirmOrder = () => {
         </View>
         <View className="flex-row justify-between items-center mx-4 my-1">
           <Text className="font-bold">Total Ammount</Text>
-          <Text className="font-bold">{itemPrice+shippinfPrice+taxprice}</Text>
+          <Text className="font-bold">{totalAmount}</Text>
         </View>
         <TouchableOpacity
-          onPress={itemData.length>0?()=>navigation.navigate("payment"):null}
+          onPress={cartItems.length>0?()=>navigation.navigate("payment"):null}
         >
           <Button
           

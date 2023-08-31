@@ -7,8 +7,14 @@ const CartItem = ({item,index, incrementHandler, decrementHandler}) => {
   return (
     <View 
      key={index}
-    className="flex-row shadow-2xl items-center  w-full h-[120px] mt-3 ">
-      <View className=" w-[120px] h-[120px]  absolute  left-3 rounded-lg bg-gray-500 shadow-lg">
+     style={{
+      backgroundColor:"white",
+      borderRadius:5,
+      elevation:9
+      
+     }}
+    className="flex-row shadow-2xl items-center  py-2  ml-1 mr-2 h-[100px] mt-3 ">
+      <View   className=" w-[110px] h-[100px] p-2  absolute  left-3 rounded-lg  shadow-lg">
         <Image
           source={{uri:item.image}}
          style={{
@@ -20,23 +26,39 @@ const CartItem = ({item,index, incrementHandler, decrementHandler}) => {
         />
       </View>
       <View className="w-[220px] absolute rounded-lg right-1 h-full"
-       style={{
-        backgroundColor:index%2==0?"#e2e8f0":"#ededed"
-       }}
+      
       >
         <View className="flex-row justify-between items-center p-4">
-          <Text className="font-bold text-[14px] text-gray-800">{item.name}</Text>
-          <Text className="font-bold text-[14px] text-gray-800">₹ {item.price}</Text>
+          <Text className="font-bold text-[14px] "
+          style={{
+              color:"black",
+          }}
+          >{item.name}</Text>
+          <Text className="font-bold text-[14px] "
+          style={{
+              color:"black",
+          }}
+          >₹ {item.price}</Text>
         </View>
         <View className="flex-row items-center mx-3">
-            <Text className="text-[14px] text-gray-800 flex-1">Quantity</Text>
+            <Text className="text-[14px] flex-1"
+            style={{
+                color:"black",
+            }}
+            >Quantity</Text>
             <TouchableOpacity 
-             onPress={()=>decrementHandler(item.quantity)}
+             onPress={()=>decrementHandler({
+              product:item?.product,
+              name:item?.name,
+              stock:item?.stock,
+              price:item?.price,
+              image:item?.image,
+              quantity:item?.quantity})}
             activeOpacity={9}>
               <Avatar.Icon
                 icon="minus"
-                color="black"
-                backgroundColor="white"
+                color="white"
+                backgroundColor="black"
                 size={27}
                 className="flex-row mr-2 justify-center items-center"
               />
@@ -45,12 +67,18 @@ const CartItem = ({item,index, incrementHandler, decrementHandler}) => {
               <Text>{item.quantity}</Text>
             </View>
             <TouchableOpacity activeOpacity={9}
-             onPress={()=>incrementHandler(item.id,item.quantity,item.stock)}
+             onPress={()=>incrementHandler({
+              product:item?.product,
+              name:item?.name,
+              stock:item?.stock,
+              price:item?.price,
+              image:item?.image,
+              quantity:item?.quantity})}
             >
               <Avatar.Icon
                 icon="plus"
-                color="black"
-                backgroundColor="white"
+                color="white"
+                backgroundColor="black"
                 size={27}
                 className="flex-row mr-2 justify-center items-center"
               />

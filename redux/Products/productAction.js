@@ -5,14 +5,15 @@ const getAllProduct = async () => {
   const response = await axios.get(`${server}/product/admin`,{
     withCredentials:true
   });
-  console.log(response.data);
+  
   if(response.data){
     return response.data;
     }
 };
 
-const getAllAdminProduct = async () => {
-    const response = await axios.get(`${server}/product/all`,{
+const getAllAdminProduct = async ({keyword,category}) => {
+    console.log("Slice Part ----"+category);
+    const response = await axios.get(`${server}/product/all?keyword=${keyword}&category=${category}`,{
       withCredentials:true
     });
     console.log(response.data);
@@ -25,7 +26,6 @@ const getAllAdminProduct = async () => {
     const response = await axios.get(`${server}/product/single/${id}`,{
       withCredentials:true
     });
-    console.log(response.data);
     if(response.data){
       return response.data;
       }

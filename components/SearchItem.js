@@ -28,10 +28,10 @@ const SearchItem = ({ name, price, imgSrc, desc, handler }) => {
             resizeMode: "contain",
           }}
         />
-        <View className="px-4 -mt-7 w-[95%]">
+        <View className="px-4 -mt-7 w-[65%]">
           <Text className="font-bold pb-1 text-[15px]">{name}</Text>
           <Text className="text-[13px] font-semibold pb-1">Rs : {price}</Text>
-          <Text className="text-[11px] ">{desc}</Text>
+          <Text className="text-[11px] " numberOfLines={2}>{desc}</Text>
         </View>
       </View>
     </TouchableOpacity>

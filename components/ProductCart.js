@@ -43,8 +43,8 @@ const ProductCard = ({
           }}
         />
         <View className="absolute top-5 left-5 flex-row w-[85%]  justify-between items-center">
-          <Text className="text-[17px]">{name}</Text>
-          <Text className="font-bold text-[17px]">₹ {price}</Text>
+          <Text className="text-[17px]  text-white">{name}</Text>
+          <Text className="font-bold text-[17px] text-white">₹ {price}</Text>
         </View>
         <TouchableOpacity
           activeOpacity={0.9}
@@ -58,6 +58,7 @@ const ProductCard = ({
             borderBottomRightRadius: 20,
             height: 50,
           }}
+          onPress={()=>addToCartHandler({id,name,stock,price,image})}
         >
           <Button>
             <Text

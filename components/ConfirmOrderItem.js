@@ -11,23 +11,27 @@ const ConfirmOrderItem = ({
 }) => {
   return (
     <View 
-    key={key}
-   className="flex-row shadow-2xl items-center  w-full h-[120px] mt-3 ">
-     <View className=" w-[120px] h-[120px]  absolute  left-3 rounded-lg bg-gray-500 shadow-lg">
-       <Image
-         source={{uri:image}}
-        style={{
-         width:"100%",
-         height:"100%",
-         resizeMode:"cover",
-        }}
-        className="rounded-lg"
-       />
-     </View>
-     <View className="w-[220px] absolute rounded-lg right-1 h-full"
-      style={{
-       backgroundColor:"#e2e8f0"
-      }}
+     key={key}
+     style={{
+      backgroundColor:"white",
+      borderRadius:5,
+      elevation:9,
+      
+      
+     }}
+    className="flex-row shadow-2xl items-center  py-2  ml-3 mr-2 h-[130px] my-3 ">
+      <View   className=" w-[110px] h-[120px] py-2  absolute  left-3 rounded-lg  shadow-lg">
+        <Image
+          source={{uri:image}}
+         style={{
+          width:"100%",
+          height:"100%",
+          resizeMode:"cover",
+         }}
+         className="rounded-lg"
+        />
+      </View>
+     <View className="w-[210px]  absolute rounded-lg right-1 h-[120px]"
      >
        <View className="flex-row justify-between items-center p-4">
          <Text className="font-bold text-[14px] text-gray-800">{name}</Text>

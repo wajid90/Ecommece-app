@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Avatar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { emptyCartsData } from "../redux/Auth/userSlice";
 
 const Header1 = ({
   headertext="",
@@ -9,6 +11,13 @@ const Header1 = ({
   cl=false
 }) => {
   const navigation = useNavigation();
+
+  const dispatch=useDispatch();
+
+  const emptyCartHandler=()=>{
+    dispatch(emptyCartsData())
+  }
+
   return (
     <View className="flex-row items-center justify-between px-2 py-1">
       <View className="flex-row items-center flex-1 pl-1">
@@ -27,7 +36,7 @@ const Header1 = ({
         </Text>
         
           <TouchableOpacity
-            onPress={emptyCart ? emptyCart : () => navigation.navigate("cart")}
+            onPress={emptyCart ? emptyCartHandler : () => navigation.navigate("cart")}
           >
             <Avatar.Icon
               size={45}

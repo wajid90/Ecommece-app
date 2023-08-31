@@ -12,14 +12,18 @@ import Header from "../components/Header";
 import { Avatar, Searchbar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import SearchItem from "../components/SearchItem";
+import { useDispatch, useSelector } from "react-redux";
+import { getAdminAllproducts } from "../redux/Products/productSlice";
+import { useEffect } from "react";
 
 const SearchModel = ({
   activeSearchQuery,
   setActiveSearchQuery,
   setActiveSearch,
-  products,
+  products
 }) => {
   const navigation = useNavigation();
+  console.log(products);
   return (
     <View
       style={{
@@ -45,7 +49,7 @@ const SearchModel = ({
       />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="mt-2 mx-3">
-          {products.map((i) => (
+          {products.products?.length>0 && products?.products?.map((i) => (
             <SearchItem
               key={i._id}
               imgSrc={i.images[0]?.url}

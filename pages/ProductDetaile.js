@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProductData } from "../redux/Products/productSlice";
 import { useIsFocused } from "@react-navigation/native";
+import { addToCart } from "../redux/Auth/userSlice";
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
@@ -45,7 +46,7 @@ const ProductDetaile = ({ route}) => {
   const isfocused=useIsFocused();
 
   const {singleProduct,isLoadding}=useSelector((state)=>state.products);
-  //  console.log("this Is my single product ..."+singleProduct.product.description);
+  //  console.log("this Is my single product ..."+singleProduct.product.price);
 
    console.log(route.params.id);
 
@@ -58,7 +59,7 @@ const ProductDetaile = ({ route}) => {
   
   const stock=5;
   const incrementHandler=()=>{
-   if(quantity>=stock) return Toast.show({
+   if(quantity>=singleProduct?.product?.stock) return Toast.show({
     type: 'error',
     text1: "Item Does not have in Stock",
   });
@@ -73,14 +74,24 @@ const ProductDetaile = ({ route}) => {
   }
   
   const addtoCartHandler=()=>{
-    if(stock===0) return Toast.show({
-      type: 'error',
-      text1: "Product Out of Stock!",
-    });
-    Toast.show({
-      type: 'success',
-      text1: 'Item Add To Cart',
-    });
+    if(singleProduct?.product?.stock==0){
+      Toast.show({
+        type:"error",
+        text1:"Product Out of Stock ....."
+      })
+    }
+      dispatch(addToCart({
+          product:singleProduct?.product?._id,
+          name:singleProduct?.product?.name,
+          stock:singleProduct?.product?.stock,
+          price:singleProduct?.product?.price,
+          image:singleProduct.product?.images[0]?.url,
+          quantity:quantity
+      }));
+      Toast.show({
+        type:"success",
+        text1:"Product Add to cart"
+      })
   }
    return (
     <View
@@ -164,7 +175,7 @@ const ProductDetaile = ({ route}) => {
         <CartButton 
            
              title="Add To Cart"
-             addtoCartHandler={addtoCartHandler}
+             addtoCartHandler={()=>addtoCartHandler()}
            />
       </View>
     </View>
