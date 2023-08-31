@@ -22,9 +22,13 @@ export const getAllproducts = createAsyncThunk(
 );
 export const getAdminAllproducts = createAsyncThunk(
     "products/admin-products",
-    async (thunkAPI) => {
+    async ({keyword,category},thunkAPI) => {
+        
       try {
-        return await productService.getAllAdminProduct();
+        return await productService.getAllAdminProduct({
+           keyword:keyword,
+           category:category
+        });
       } catch (e) {
         return thunkAPI.rejectWithValue(e);
       }
