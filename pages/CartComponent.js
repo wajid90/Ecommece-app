@@ -23,7 +23,6 @@ const CartComponent = () => {
   const [itemPrice]=useState(cartItems.reduce((prev,curr)=>prev+curr.quantity*curr.price,0));
 
   const dispatch=useDispatch();
-   console.log(cartItems);
   const incrementHandler=({
     product,
     name,

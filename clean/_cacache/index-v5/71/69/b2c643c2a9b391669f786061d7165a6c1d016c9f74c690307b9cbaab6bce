@@ -1,0 +1,2 @@
+
+546ca752146c8d616bb702c8892307f17beeb733	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/bplist-creator/-/bplist-creator-0.1.0.tgz","integrity":null,"time":1693643430714,"size":"0","metadata":{"time":1693643430714,"url":"http://registry.npmjs.org/bplist-creator/-/bplist-creator-0.1.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:31 GMT","location":"https://registry.npmjs.org/bplist-creator/-/bplist-creator-0.1.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

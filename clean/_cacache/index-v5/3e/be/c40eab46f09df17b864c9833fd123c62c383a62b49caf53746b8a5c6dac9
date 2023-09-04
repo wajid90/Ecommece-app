@@ -1,0 +1,2 @@
+
+2aa537c6a636e5f728f2a2906e890593679dc358	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz","integrity":null,"time":1693643422524,"size":"0","metadata":{"time":1693643422524,"url":"http://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:23 GMT","location":"https://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

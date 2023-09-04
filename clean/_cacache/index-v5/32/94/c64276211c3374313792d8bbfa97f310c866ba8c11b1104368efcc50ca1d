@@ -1,0 +1,2 @@
+
+a0c82887b844c0440f0a647682a94597a419c989	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/caller-callsite","integrity":null,"time":1693599225706,"size":"0","metadata":{"time":1693599225706,"url":"http://registry.npmjs.org/caller-callsite","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:45 GMT","location":"https://registry.npmjs.org/caller-callsite","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

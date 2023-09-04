@@ -1,0 +1,2 @@
+
+9ccbbcdf4b534b2ca35f977c94bc00958803da18	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz","integrity":null,"time":1693643423285,"size":"0","metadata":{"time":1693643423285,"url":"http://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:24 GMT","location":"https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

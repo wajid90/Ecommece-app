@@ -1,0 +1,2 @@
+
+987d78e4bfcfa30563915755021f15f5c74f1df4	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/metro-runtime","integrity":null,"time":1693599220673,"size":"0","metadata":{"time":1693599220673,"url":"http://registry.npmjs.org/metro-runtime","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:40 GMT","location":"https://registry.npmjs.org/metro-runtime","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

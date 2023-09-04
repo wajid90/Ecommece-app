@@ -1,0 +1,2 @@
+
+f25c6922a7a0adbc78b088aa25c78d3535e6c0dd	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/abort-controller","integrity":null,"time":1693599218791,"size":"0","metadata":{"time":1693599218791,"url":"http://registry.npmjs.org/abort-controller","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:38 GMT","location":"https://registry.npmjs.org/abort-controller","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

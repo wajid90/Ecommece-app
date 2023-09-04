@@ -20,6 +20,7 @@ import { getAdminAllproducts, getAllCategories, getAllproducts } from "../redux/
 import Loader from "../components/Loader";
 import Toast  from "react-native-toast-message";
 import { addToCart } from "../redux/Auth/userSlice";
+import ProductSmallCart from "../components/ProductSmallCart";
 
 const Home = () => {
   const [category, setCategory] = useState("");
@@ -29,12 +30,11 @@ const Home = () => {
   const [activeSearchQuery, setActiveSearchQuery] = useState("");
   const navigation = useNavigation();
 
-  const {categories,products,isLoadding}=useSelector((state)=>state.products);
+  const {categories,products,isLoadding}=useSelector((state)=>state?.products);
   const categoryHandler = (catId,catName) => {
     setCategoryName(catName);
     setCategory(catId)
   };
-  console.log("this is my category :----"+category);
   const isfocused=useIsFocused();
   const addToCartHandler = ({id,name,stock,price,image}) => {
    
@@ -61,7 +61,7 @@ const Home = () => {
   const dispatch=useDispatch();
   useEffect(()=>{
     dispatch(getAllCategories());
- },[]);
+ },[isfocused]);
 // dispatch(getAllproducts());
   useEffect(()=>{
      const data=setTimeout(()=>{
@@ -118,17 +118,17 @@ const Home = () => {
                   backgroundColor:
                     category === item._id ? "#c70049" : "#E2E8F0",
                 }}
-                onPress={() => categoryHandler(item._id,item.category)}
+                onPress={() => categoryHandler(item?._id,item?.category)}
                 className={`my-4 mx-[4]  shadow`}
               >
                 <Text
                   className="text-slate-500 text-[12px]"
                   style={{
-                    color: category === item._id ? "#fff" : "#000",
+                    color: category === item?._id ? "#fff" : "#000",
                   }}
                 >
                   {" "}
-                  {item.category}
+                  {item?.category}
                 </Text>
               </Button>
             ))}
@@ -136,27 +136,127 @@ const Home = () => {
            }
           </ScrollView>
         </View>
+
         <View>
+
+        <ScrollView  showsVerticalScrollIndicator={false} 
+         
+        >
+        <View className="flex-row mx-4 my-3 justify-between items-center">
+                <Text className="font-semibold text-[12px]">Latest products</Text>
+                <Text className="font-semibold text-[12px]">See More</Text>
+            </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+
             {products?.products?.length>0 && products.products?.map((item, index) => (
-              <ProductCard
-                stock={item.stock}
-                name={item.name}
-                price={item.price}
-                image={item.images[0]?.url}
+
+              item.feature==="Latest products" && <ProductCard
+                stock={item?.stock}
+                name={item?.name}
+                price={item?.price}
+                image={item?.images[0]?.url}
                 addToCartHandler={addToCartHandler}
-                id={item._id}
-                key={item._id}
+                id={item?._id}
+                key={item?._id}
+                i={index}
+                navigation={navigation}
+              />
+              
+            ))}
+          </ScrollView>
+           
+
+           <View>
+            <View className="flex-row mx-4 my-3 justify-between items-center">
+                <Text className="font-semibold text-[12px]">special Products</Text>
+                <Text className="font-semibold text-[12px]">See More</Text>
+            </View>
+           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {products?.products?.length>0 && products.products?.map((item, index) => (
+              item.feature==="special Products" &&  <ProductSmallCart
+                stock={item?.stock}
+                name={item?.name}
+                price={item?.price}
+                image={item?.images[0]?.url}
+                addToCartHandler={addToCartHandler}
+                id={item?._id}
+                key={item?._id}
                 i={index}
                 navigation={navigation}
               />
             ))}
           </ScrollView>
+           </View>
+
+           <View >
+           <View className="flex-row mx-4 my-3 justify-between items-center">
+                <Text className="font-semibold text-[12px]">Famous Products</Text>
+                <Text className="font-semibold text-[12px]">See More</Text>
+            </View>
+           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {products?.products?.length>0 && products.products?.map((item, index) => (
+              item.feature==="Famous Products" &&  <ProductSmallCart
+                stock={item?.stock}
+                name={item?.name}
+                price={item?.price}
+                image={item?.images[0]?.url}
+                addToCartHandler={addToCartHandler}
+                id={item?._id}
+                key={item?._id}
+                i={index}
+                navigation={navigation}
+              />
+            ))}
+          </ScrollView>
+           </View>
+           <View>
+           <View className="flex-row mx-4 my-3 justify-between items-center">
+                <Text className="font-semibold text-[12px]">All Products</Text>
+                <Text className="font-semibold text-[12px]">See More</Text>
+            </View>
+           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {products?.products?.length>0 && products.products?.map((item, index) => (
+               <ProductSmallCart
+                stock={item?.stock}
+                name={item?.name}
+                price={item?.price}
+                image={item?.images[0]?.url}
+                addToCartHandler={addToCartHandler}
+                id={item?._id}
+                key={item?._id}
+                i={index}
+                navigation={navigation}
+              />
+            ))}
+          </ScrollView>
+           </View>
+           <View>
+           <View className="flex-row mx-4 my-3 justify-between items-center">
+                <Text className="font-semibold text-[12px]">Check Products</Text>
+                <Text className="font-semibold text-[12px]">See More</Text>
+            </View>
+           
+            {products?.products?.length>0 && products.products?.map((item, index) => (
+               <ProductCard
+                stock={item?.stock}
+                name={item?.name}
+                price={item?.price}
+                image={item?.images[0]?.url}
+                addToCartHandler={addToCartHandler}
+                id={item?._id}
+                key={item?._id}
+                i={index}
+                navigation={navigation}
+              />
+            ))}
+          
+           </View>
+          </ScrollView>
         </View>
+
       </View>
       <Footer activeRoute={"home"} />
     </>
   );
 };
-
 export default Home;

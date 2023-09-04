@@ -1,0 +1,2 @@
+
+bfb26ae5994206aefa1ba4ca55d2fc84f2525eeb	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/ua-parser-js/-/ua-parser-js-1.0.35.tgz","integrity":null,"time":1693643479869,"size":"0","metadata":{"time":1693643479868,"url":"http://registry.npmjs.org/ua-parser-js/-/ua-parser-js-1.0.35.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:19 GMT","location":"https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-1.0.35.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

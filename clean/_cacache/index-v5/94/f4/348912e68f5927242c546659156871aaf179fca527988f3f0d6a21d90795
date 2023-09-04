@@ -1,0 +1,2 @@
+
+88a2a110cd7c1f03eaced4aa6ef9a0b7f08308b4	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/serialize-error","integrity":null,"time":1693599224134,"size":"0","metadata":{"time":1693599224134,"url":"http://registry.npmjs.org/serialize-error","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:44 GMT","location":"https://registry.npmjs.org/serialize-error","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

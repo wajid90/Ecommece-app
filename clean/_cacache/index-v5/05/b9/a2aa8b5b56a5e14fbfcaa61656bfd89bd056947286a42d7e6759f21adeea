@@ -1,0 +1,2 @@
+
+ca542b3fd4757b73b34ec6f0884fd951fcc4e435	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/klaw","integrity":null,"time":1693599227828,"size":"0","metadata":{"time":1693599227827,"url":"http://registry.npmjs.org/klaw","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:47 GMT","location":"https://registry.npmjs.org/klaw","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

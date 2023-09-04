@@ -1,0 +1,2 @@
+
+1db066382294cd072448ea34fdd13b2d452ab036	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/@expo/config-types/-/config-types-47.0.0.tgz","integrity":null,"time":1693643436809,"size":"0","metadata":{"time":1693643436809,"url":"http://registry.npmjs.org/@expo/config-types/-/config-types-47.0.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:37 GMT","location":"https://registry.npmjs.org/@expo/config-types/-/config-types-47.0.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

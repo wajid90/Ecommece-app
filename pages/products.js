@@ -25,8 +25,8 @@ const data = [
   {
     name: "sell",
     population: 2800000,
-    color: "#c70049",
-    legendFontColor: "#c70049",
+    color: "pink",
+    legendFontColor: "pink",
     legendFontSize: 10
   },
 
@@ -58,8 +58,8 @@ const AdminProducts = () => {
        <Avatar.Icon
               size={27}
               icon="arrow-left"
-              color="white"
-              className="bg-color1"
+              color="black"
+              className="bg-white"
             
             />
        </TouchableOpacity>
@@ -67,7 +67,7 @@ const AdminProducts = () => {
        <Text className="font-bold text-[17px] ml-3">Products</Text>
        </View>
         <View className="flex-row p-3 rounded-full bg-gray-100">
-          <Ionicons name="moon" size={22} color="black" />
+          <Ionicons name="moon" size={22} color="white" />
         </View>
       </View>
       <ScrollView
@@ -103,14 +103,14 @@ const AdminProducts = () => {
               size={27}
               icon="arrow-right"
               color="white"
-              className="bg-color1"
+              className="bg-black"
             />
           </TouchableOpacity>
         </View>
         <View className="w-full flex-row items-center mx-4 my-2">
         <TouchableOpacity
           
-        className="w-[45%] rounded-lg bg-color1 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
+        className="w-[45%] rounded-lg bg-black p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
           <View className="flex-row items-center justify-between ">
            <Text className="font-bold text-lg text-white px-2">All Product</Text>
            <TouchableOpacity
@@ -119,7 +119,7 @@ const AdminProducts = () => {
               size={27}
               icon="arrow-right"
               color="white"
-              className="bg-color1"
+              className="bg-black"
             />
            </TouchableOpacity>
            

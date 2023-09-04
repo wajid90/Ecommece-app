@@ -3,72 +3,26 @@ import React from "react";
 import { Platform } from "react-native";
 import Header1 from "../components/Header1";
 import OrderItemsCart from "../components/OrderItemsCart";
+import { useCustomHook2, useGetOrders } from "../components/CustomHook";
+import { useDispatch, useSelector } from "react-redux";
+import { useIsFocused } from "@react-navigation/native";
+import Loader from "../components/Loader";
+import { proccessOrderData } from "../redux/Auth/userSlice";
 
 
-const orderData=[
-  {
-    _id:"lsvndvlnsvsdkksckjndkjcn",
-    shippingInfo:{
-      address:"73 nai basti firozabad",
-      city:"Firozabad",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
+const AdminGetAllOrders = ({navigation}) => {
+  const isFocused=useIsFocused();
+  const {loadding,orders}=useGetOrders(isFocused,true);
+  const {user}=useSelector((state)=>state.auth);
 
-  },
-  {
-    _id:"lsvndvlnsvsnkjcn",
-    shippingInfo:{
-      address:"730 nai basti firozabad",
-      city:"Agra",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
 
-  },
-  {
-    _id:"lsvndvlnsvsdkksccdcdkjndkjcn",
-    shippingInfo:{
-      address:"73 nai basti firozabad",
-      city:"Firozabad",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
-
-  },
-  {
-    _id:"lsvndvlnscccdcvsnkjcn",
-    shippingInfo:{
-      address:"730 nai basti firozabad",
-      city:"Agra",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
-
-  }
-]
-const AdminGetAllOrders = () => {
-  const isLoading = false;
-  const isAdmin=true;
+  const dispatch=useDispatch();
+  const processOrderLoading=useCustomHook2(dispatch,navigation,"dashboard");
   const updateHandler=(id)=>{
-    console.log("button pressed ...."+id);
+    dispatch(proccessOrderData(id));
   }
+
+
   return (
     <View
       style={{
@@ -79,7 +33,7 @@ const AdminGetAllOrders = () => {
     >
       <Header1 headertext="My Orders" />
 
-      {isLoading ? (
+      {loadding ? (
         <Loader />
       ) : (
         <View
@@ -87,13 +41,14 @@ const AdminGetAllOrders = () => {
             flex:1,
             marginTop:0
           }}
+          className="bg-gray-200"
         >
           <ScrollView
             showsVerticalScrollIndicator={false}
           >
             {
-              orderData.length>0?(
-                orderData.map((item,index)=>(
+              orders.length>0?(
+                orders.map((item,index)=>(
                   <OrderItemsCart
                   index={index}
                   id={item._id}
@@ -102,12 +57,12 @@ const AdminGetAllOrders = () => {
                   city={item.shippingInfo.city}
                   pinCode={item.shippingInfo.pinCode}
                   country={item.shippingInfo.country}
-
                   orderedOn={item.createdAt}
                   status={item.orderStatus}
                   paymentMethod={item.paymentMethod}
                   updateHandler={updateHandler}
-                  admin={isAdmin}
+                  admin={user?.role==="admin"}
+                  loading={processOrderLoading}
                   />
                 ))
               ):(

@@ -67,7 +67,7 @@ const LoginPage = ({ navigation }) => {
             }}
             validationSchema={signInSchma}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
+            
               dispatch(AuthLogin(values));
               setTimeout(() => {
                 resetForm();
@@ -182,13 +182,14 @@ const LoginPage = ({ navigation }) => {
                
               >
                 <Button
-                loading={isLoadding}
+               
                  className="px-4 py-2 bg-black/[400] mx-4 my-2 rounded-full "
                  textColor={`${!isValid ? "black":"white"}`}
                  style={{
                   backgroundColor:`${!isValid ? "gray":"black"}`
                   
                 }}
+                loading={isLoadding}
                  
                >
                   Login

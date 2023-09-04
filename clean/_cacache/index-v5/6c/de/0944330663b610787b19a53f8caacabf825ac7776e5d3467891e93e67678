@@ -1,0 +1,2 @@
+
+0bc8f12fa18746105110822d35da6916ea9ead53	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/postcss-calc/-/postcss-calc-8.2.4.tgz","integrity":null,"time":1693643482944,"size":"0","metadata":{"time":1693643482943,"url":"http://registry.npmjs.org/postcss-calc/-/postcss-calc-8.2.4.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:22 GMT","location":"https://registry.npmjs.org/postcss-calc/-/postcss-calc-8.2.4.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

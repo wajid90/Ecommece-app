@@ -1,0 +1,2 @@
+
+b16cb831ba4864424f4777e887f4c3a9a0cb4a52	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/compression/-/compression-1.7.4.tgz","integrity":null,"time":1693643427062,"size":"0","metadata":{"time":1693643427062,"url":"http://registry.npmjs.org/compression/-/compression-1.7.4.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:27 GMT","location":"https://registry.npmjs.org/compression/-/compression-1.7.4.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

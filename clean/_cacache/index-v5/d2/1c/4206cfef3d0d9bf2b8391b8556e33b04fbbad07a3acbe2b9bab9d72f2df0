@@ -1,0 +1,2 @@
+
+75aa4de1cd2e939d6d6cb1f77a3e6f85d3095eec	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/event-target-shim","integrity":null,"time":1693599218783,"size":"0","metadata":{"time":1693599218783,"url":"http://registry.npmjs.org/event-target-shim","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:38 GMT","location":"https://registry.npmjs.org/event-target-shim","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

@@ -1,0 +1,2 @@
+
+97b7bec0a8aeae5f5a601eb9fadaf6cbc60b564c	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz","integrity":null,"time":1693643423310,"size":"0","metadata":{"time":1693643423310,"url":"http://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:24 GMT","location":"https://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

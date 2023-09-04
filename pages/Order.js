@@ -3,72 +3,19 @@ import React from "react";
 import { Platform } from "react-native";
 import Header1 from "../components/Header1";
 import OrderItemsCart from "../components/OrderItemsCart";
+import { useCustomHook2, useGetOrders } from "../components/CustomHook";
+import { useIsFocused } from "@react-navigation/native";
+import Loader from "../components/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { proccessOrderData } from "../redux/Auth/userSlice";
 
 
-const orderData=[
-  {
-    _id:"lsvndvlnsvsdkksckjndkjcn",
-    shippingInfo:{
-      address:"73 nai basti firozabad",
-      city:"Firozabad",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
-
-  },
-  {
-    _id:"lsvndvlnsvsnkjcn",
-    shippingInfo:{
-      address:"730 nai basti firozabad",
-      city:"Agra",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
-
-  },
-  {
-    _id:"lsvndvlnsvsdkksccdcdkjndkjcn",
-    shippingInfo:{
-      address:"73 nai basti firozabad",
-      city:"Firozabad",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
-
-  },
-  {
-    _id:"lsvndvlnscccdcvsnkjcn",
-    shippingInfo:{
-      address:"730 nai basti firozabad",
-      city:"Agra",
-      country:"india",
-      pinCode:283203
-    },
-    createdAt:"12-2-2022T2343",
-    orderStatus:"Processing",
-    paymentMethod:"COD",
-    totalAmount:200,
-
-  }
-]
 const Order = () => {
-  const isLoading = false;
-  const isAdmin=false;
-  const updateHandler=(id)=>{
-    console.log("button pressed ...."+id);
-  }
+   const isFocused=useIsFocused();
+   const {loadding,orders}=useGetOrders(isFocused);
+   const {user}=useSelector((state)=>state.auth);
+
+
   return (
     <View
       style={{
@@ -79,7 +26,7 @@ const Order = () => {
     >
       <Header1 headertext="My Orders" />
 
-      {isLoading ? (
+      {loadding ? (
         <Loader />
       ) : (
         <View
@@ -92,8 +39,8 @@ const Order = () => {
             showsVerticalScrollIndicator={false}
           >
             {
-              orderData.length>0?(
-                orderData.map((item,index)=>(
+              orders.length>0?(
+                orders.map((item,index)=>(
                   <OrderItemsCart
                   index={index}
                   id={item._id}
@@ -107,7 +54,7 @@ const Order = () => {
                   status={item.orderStatus}
                   paymentMethod={item.paymentMethod}
                   updateHandler={updateHandler}
-                  admin={isAdmin}
+                  admin={user?.role==="admin"}
                   />
                 ))
               ):(

@@ -1,0 +1,2 @@
+
+ff815b49ed5c7191e26d3a2326e36b887afe0e33	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/is-path-cwd/-/is-path-cwd-2.2.0.tgz","integrity":null,"time":1693643422860,"size":"0","metadata":{"time":1693643422860,"url":"http://registry.npmjs.org/is-path-cwd/-/is-path-cwd-2.2.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:23 GMT","location":"https://registry.npmjs.org/is-path-cwd/-/is-path-cwd-2.2.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

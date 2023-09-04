@@ -36,9 +36,49 @@ const login = async ({email,password}) => {
       return reponces.data;
     }
   };
-
+  const orderPayment = async (userData) => {
+    const reponces = await axios.post(`${server}/order/new`, userData,{
+      headers:{
+        "Content-Type": "application/json",
+      },
+      withCredentials:true
+    });
+    if (reponces.data) {
+      return reponces.data;
+    }
+  };
+  const proccessOrder = async (id) => {
+    const reponces = await axios.put(`${server}/order/single/${id}`, {},{
+      withCredentials:true
+    });
+    if (reponces.data) {
+      return reponces.data;
+    }
+  };
   const updatePassword = async (userData) => {
     const reponces = await axios.put(`${server}/user/changepassword`, userData,{
+      headers:{
+        "Content-Type": "application/json",
+      },
+      withCredentials:true
+    });
+    if (reponces.data) {
+      return reponces.data;
+    }
+  };
+  const forgetPassword = async (userData) => {
+    const reponces = await axios.post(`${server}/user/forgetpassword`, userData,{
+      headers:{
+        "Content-Type": "application/json",
+      },
+      withCredentials:true
+    });
+    if (reponces.data) {
+      return reponces.data;
+    }
+  };
+  const resetPassword = async (userData) => {
+    const reponces = await axios.put(`${server}/user/forgetpassword`, userData,{
       headers:{
         "Content-Type": "application/json",
       },
@@ -91,6 +131,10 @@ const login = async ({email,password}) => {
     logout,
     updatePassword,
     updateProfile,
-    updateProfilePic
+    updateProfilePic,
+    orderPayment,
+    proccessOrder,
+    forgetPassword,
+    resetPassword
   };
   export default authService;

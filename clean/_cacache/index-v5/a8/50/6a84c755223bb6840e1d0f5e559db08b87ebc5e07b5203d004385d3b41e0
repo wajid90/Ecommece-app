@@ -1,0 +1,2 @@
+
+ac63d3227426fab762ee14a94390d10555e0c208	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/deep-extend/-/deep-extend-0.6.0.tgz","integrity":null,"time":1693643425470,"size":"0","metadata":{"time":1693643425468,"url":"http://registry.npmjs.org/deep-extend/-/deep-extend-0.6.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:26 GMT","location":"https://registry.npmjs.org/deep-extend/-/deep-extend-0.6.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

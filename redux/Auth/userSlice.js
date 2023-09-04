@@ -1,7 +1,6 @@
-import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./userAction";
 
-// const initialState = ;
 
 const initialState={
   user: null,
@@ -49,6 +48,33 @@ export const AuthLogin = createAsyncThunk(
       }
     }
   );
+
+  
+  export const forgetPasswordData = createAsyncThunk(
+    "user/forgetPassword",
+    async (data,thunkAPI) => {
+
+      try {
+        return await authService.forgetPassword(data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+
+  export const resetPasswordData = createAsyncThunk(
+    "user/resetPassword",
+    async (data,thunkAPI) => {
+
+      try {
+        return await authService.resetPassword(data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+
+
   export const updateProfileData = createAsyncThunk(
     "user/updateProfile",
     async (data,thunkAPI) => {
@@ -60,12 +86,35 @@ export const AuthLogin = createAsyncThunk(
       }
     }
   );
+  export const orderCrreatedData = createAsyncThunk(
+    "user/orderPayment",
+    async (data,thunkAPI) => {
+
+      try {
+        return await authService.orderPayment(data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+  
   export const updateProfilePicData = createAsyncThunk(
     "user/updateProfilePic",
     async (data,thunkAPI) => {
 
       try {
         return await authService.updateProfilePic(data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+  export const proccessOrderData = createAsyncThunk(
+    "user/processOrders",
+    async (id,thunkAPI) => {
+
+      try {
+        return await authService.proccessOrder(id);
       } catch (e) {
         return thunkAPI.rejectWithValue(e);
       }
@@ -142,7 +191,8 @@ export const AuthLogin = createAsyncThunk(
           state.isSuccess = false;
           state.isAuthenticated=false
           state.errorMessage = action.payload.response.data.message;
-        }) .addCase(userLoadData.pending, (state) => {
+        })
+        .addCase(userLoadData.pending, (state) => {
           state.isLoadding = true;
         })
         .addCase(userLoadData.fulfilled, (state, action) => {
@@ -154,7 +204,23 @@ export const AuthLogin = createAsyncThunk(
           state.isLoadding = false;
           state.isAuthenticated=false
           state.user = null;
-        }).addCase(updateProfileData.pending, (state) => {
+        }).addCase(orderCrreatedData.pending, (state) => {
+          state.isLoadding = true;
+        })
+        .addCase(orderCrreatedData.fulfilled, (state, action) => {
+          state.isLoadding = false;
+          state.isSuccess=true;
+          state.orderCreated = action.payload;
+          state.successMessage="Order Created SuccessFully ..."
+        })
+        .addCase(orderCrreatedData.rejected, (state,action) => {
+          state.isLoadding = false;
+          state.isError=true;
+          isSuccess=false;
+          state.orderCreated = null;
+          state.errorMessage=action.payload?.response?.data?.message
+        })
+        .addCase(updateProfileData.pending, (state) => {
           state.isLoadding = true;
         })
         .addCase(updateProfileData.fulfilled, (state, action) => {
@@ -165,6 +231,20 @@ export const AuthLogin = createAsyncThunk(
         .addCase(updateProfileData.rejected, (state,action) => {
           state.isLoadding = false;
           state.isError=true
+          state.errorMessage = action.payload.response.data.message;
+  
+        }) .addCase(proccessOrderData.pending, (state) => {
+          state.isLoadding = true;
+        })
+        .addCase(proccessOrderData.fulfilled, (state, action) => {
+          state.isLoadding = false;
+          state.isSuccess=true
+          state.successMessage = action.payload.message;
+        })
+        .addCase(proccessOrderData.rejected, (state,action) => {
+          state.isLoadding = false;
+          state.isError=true;
+          state.isSuccess=false;
           state.errorMessage = action.payload.response.data.message;
   
         }).addCase(updateProfilePicData.pending, (state) => {
@@ -226,6 +306,32 @@ export const AuthLogin = createAsyncThunk(
           state.isLoadding = false;
           state.isError=true;
           state.errorMessage=action.payload.response.data.message;
+        }).addCase(forgetPasswordData.pending, (state) => {
+          state.isLoadding = true;
+        })
+        .addCase(forgetPasswordData.fulfilled, (state, action) => {
+          state.isLoadding = false;
+          state.isSuccess=true;
+          state.successMessage=action.payload.message;
+        })
+        .addCase(forgetPasswordData.rejected, (state,action) => {
+          state.isLoadding = false;
+          state.isError=true;
+          state.isSuccess=false;
+          state.errorMessage=action?.payload?.response?.data?.message;
+        }).addCase(resetPasswordData.pending, (state) => {
+          state.isLoadding = true;
+        })
+        .addCase(resetPasswordData.fulfilled, (state, action) => {
+          state.isLoadding = false;
+          state.isSuccess=true;
+          state.successMessage=action.payload.message;
+        })
+        .addCase(resetPasswordData.rejected, (state,action) => {
+          state.isLoadding = false;
+          state.isError=true;
+          state.isSuccess=false;
+          state.errorMessage=action?.payload?.response?.data?.message;
         }).addCase("clearError",(state)=>{
           state.errorMessage="";
 

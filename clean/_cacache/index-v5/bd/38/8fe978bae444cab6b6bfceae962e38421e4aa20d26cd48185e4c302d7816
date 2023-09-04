@@ -1,0 +1,2 @@
+
+84267dcff6b1af85b52dbcc16a3c150f6e720761	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.1.1.tgz","integrity":null,"time":1693643445057,"size":"0","metadata":{"time":1693643445056,"url":"http://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.1.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:45 GMT","location":"https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.1.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

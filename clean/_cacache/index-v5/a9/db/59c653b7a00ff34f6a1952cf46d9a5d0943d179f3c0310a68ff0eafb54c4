@@ -1,0 +1,2 @@
+
+4a48dbdea05869c72397bba0f74596dd02181c1c	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz","integrity":null,"time":1693643424650,"size":"0","metadata":{"time":1693643424650,"url":"http://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:25 GMT","location":"https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

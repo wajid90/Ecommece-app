@@ -1,0 +1,2 @@
+
+65f5fc2d47bdcc6db62f9aed5c337c0665d8f282	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/cli-cursor/-/cli-cursor-2.1.0.tgz","integrity":null,"time":1693643428791,"size":"0","metadata":{"time":1693643428791,"url":"http://registry.npmjs.org/cli-cursor/-/cli-cursor-2.1.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:28 GMT","location":"https://registry.npmjs.org/cli-cursor/-/cli-cursor-2.1.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

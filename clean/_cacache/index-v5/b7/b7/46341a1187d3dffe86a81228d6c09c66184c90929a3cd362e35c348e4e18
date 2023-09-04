@@ -1,0 +1,2 @@
+
+e1bf887b988f6e8bc90735556ae2ce48c6589585	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/tmpl/-/tmpl-1.0.5.tgz","integrity":null,"time":1693643479982,"size":"0","metadata":{"time":1693643479982,"url":"http://registry.npmjs.org/tmpl/-/tmpl-1.0.5.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:19 GMT","location":"https://registry.npmjs.org/tmpl/-/tmpl-1.0.5.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

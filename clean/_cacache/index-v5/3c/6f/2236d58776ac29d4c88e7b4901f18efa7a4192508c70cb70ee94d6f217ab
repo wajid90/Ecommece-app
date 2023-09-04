@@ -1,0 +1,2 @@
+
+a05037c4c88be420c85441bf220b905357f00b94	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/aggregate-error/-/aggregate-error-3.1.0.tgz","integrity":null,"time":1693643434046,"size":"0","metadata":{"time":1693643434046,"url":"http://registry.npmjs.org/aggregate-error/-/aggregate-error-3.1.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:34 GMT","location":"https://registry.npmjs.org/aggregate-error/-/aggregate-error-3.1.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

@@ -1,0 +1,2 @@
+
+416fd01f50b060eb8dedf70738f2440b6d684f32	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz","integrity":null,"time":1693643441096,"size":"0","metadata":{"time":1693643441095,"url":"http://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:41 GMT","location":"https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

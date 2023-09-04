@@ -3,7 +3,6 @@ import React from "react";
 import { Avatar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { emptyCartData } from "../redux/Cart/cartSlice";
 import { emptyCartsData } from "../redux/Auth/userSlice";
 
 const Header = ({

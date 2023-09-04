@@ -1,0 +1,2 @@
+
+c1381df4384281d1627e832147c4e4fbc7a12ca1	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/shallow-clone/-/shallow-clone-3.0.1.tgz","integrity":null,"time":1693643481005,"size":"0","metadata":{"time":1693643481005,"url":"http://registry.npmjs.org/shallow-clone/-/shallow-clone-3.0.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:20 GMT","location":"https://registry.npmjs.org/shallow-clone/-/shallow-clone-3.0.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

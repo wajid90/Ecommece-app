@@ -1,0 +1,2 @@
+
+1dbe2af6e8f8f15afc630323c17271b8bace525d	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz","integrity":null,"time":1693643434989,"size":"0","metadata":{"time":1693643434989,"url":"http://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:35 GMT","location":"https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

@@ -1,0 +1,2 @@
+
+63e6d09af75356fe91419282c975b04a1db2b8ac	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/cross-spawn/-/cross-spawn-6.0.5.tgz","integrity":null,"time":1693643426302,"size":"0","metadata":{"time":1693643426302,"url":"http://registry.npmjs.org/cross-spawn/-/cross-spawn-6.0.5.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:26 GMT","location":"https://registry.npmjs.org/cross-spawn/-/cross-spawn-6.0.5.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

@@ -1,0 +1,2 @@
+
+64d9f50dba23e13831567c1c1c4ede5b18c7be0e	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz","integrity":null,"time":1693643441615,"size":"0","metadata":{"time":1693643441615,"url":"http://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:42 GMT","location":"https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

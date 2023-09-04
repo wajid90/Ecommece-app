@@ -1,0 +1,2 @@
+
+8debfe09f2d7d2391e57f777497d07b345577ec3	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/log-symbols/-/log-symbols-2.2.0.tgz","integrity":null,"time":1693643422462,"size":"0","metadata":{"time":1693643422462,"url":"http://registry.npmjs.org/log-symbols/-/log-symbols-2.2.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:22 GMT","location":"https://registry.npmjs.org/log-symbols/-/log-symbols-2.2.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

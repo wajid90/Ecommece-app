@@ -1,0 +1,2 @@
+
+1c071fe9145becfe0bf8959516e10dd4cd282f2b	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz","integrity":null,"time":1693643432282,"size":"0","metadata":{"time":1693643432282,"url":"http://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:32 GMT","location":"https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

@@ -1,0 +1,2 @@
+
+e7f0bc469a6ee1c1cf623985d21acead37f0467a	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/wrap-ansi","integrity":null,"time":1693599230550,"size":"0","metadata":{"time":1693599230550,"url":"http://registry.npmjs.org/wrap-ansi","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:50 GMT","location":"https://registry.npmjs.org/wrap-ansi","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

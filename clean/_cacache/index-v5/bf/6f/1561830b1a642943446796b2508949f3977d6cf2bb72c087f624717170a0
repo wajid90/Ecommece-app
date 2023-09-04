@@ -1,0 +1,2 @@
+
+3570f2e622ec6e8c63b3770b480e6f694f77ffed	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.41.tgz","integrity":null,"time":1693643434522,"size":"0","metadata":{"time":1693643434519,"url":"http://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.41.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:35 GMT","location":"https://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.41.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

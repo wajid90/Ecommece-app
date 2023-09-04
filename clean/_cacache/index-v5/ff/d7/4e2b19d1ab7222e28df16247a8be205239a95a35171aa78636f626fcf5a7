@@ -1,0 +1,2 @@
+
+5068a5a74c2567cffb799ecc5366c2155a47865c	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/sudo-prompt/-/sudo-prompt-9.1.1.tgz","integrity":null,"time":1693643452434,"size":"0","metadata":{"time":1693643452434,"url":"http://registry.npmjs.org/sudo-prompt/-/sudo-prompt-9.1.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:53 GMT","location":"https://registry.npmjs.org/sudo-prompt/-/sudo-prompt-9.1.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

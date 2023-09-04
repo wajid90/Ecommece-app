@@ -1,0 +1,2 @@
+
+b81f89a2eb1b21c4065c2ad8f05091a952ef3246	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/ssri/-/ssri-8.0.1.tgz","integrity":null,"time":1693643480264,"size":"0","metadata":{"time":1693643480264,"url":"http://registry.npmjs.org/ssri/-/ssri-8.0.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:20 GMT","location":"https://registry.npmjs.org/ssri/-/ssri-8.0.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

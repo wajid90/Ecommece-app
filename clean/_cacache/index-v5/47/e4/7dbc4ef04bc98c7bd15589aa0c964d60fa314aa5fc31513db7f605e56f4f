@@ -1,0 +1,2 @@
+
+b42a936b5e347284518367b4f5b576df1f577dc1	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/dequal/-/dequal-1.0.1.tgz","integrity":null,"time":1693643425175,"size":"0","metadata":{"time":1693643425174,"url":"http://registry.npmjs.org/dequal/-/dequal-1.0.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:26 GMT","location":"https://registry.npmjs.org/dequal/-/dequal-1.0.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

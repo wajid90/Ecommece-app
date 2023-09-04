@@ -1,0 +1,2 @@
+
+656a90f8d47886c1890fac86efa8ea6f0488c599	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz","integrity":null,"time":1693643434739,"size":"0","metadata":{"time":1693643434738,"url":"http://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:35 GMT","location":"https://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

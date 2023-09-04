@@ -32,7 +32,7 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
   return (
     <View
       style={{
-        backgroundColor: "#c70049",
+        backgroundColor: "black",
         borderTopLeftRadius: 120,
         borderTopRightRadius: 120,
         position: "absolute",
@@ -57,7 +57,7 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
           <MaterialIcons name="analytics"  color="white"
             size={20}
             style={{
-              backgroundColor: "#c70049",
+              backgroundColor: "black",
             }}/>
           <Text className="text-white text-xs">analytics</Text>
           </View>
@@ -70,7 +70,7 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
            <Ionicons name="wallet"   color="white"
             size={22}
             style={{
-              backgroundColor: "#c70049",
+              backgroundColor: "black",
             }} />
    <Text className="text-white text-xs">wallet</Text>
 
@@ -113,7 +113,7 @@ const AdminFooter = ({ activeRoute = "dashboard" }) => {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => navigatationHandler(0)}
-          className="bg-color1 p-4 rounded-full"
+          className="bg-black p-4 rounded-full"
         >
            <AntDesign name="dashboard" size={35} color="white" 
              

@@ -1,0 +1,2 @@
+
+039c0c876da08a157cb868402dcb36b144bc1e73	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/rimraf","integrity":null,"time":1693599227859,"size":"0","metadata":{"time":1693599227858,"url":"http://registry.npmjs.org/rimraf","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:47 GMT","location":"https://registry.npmjs.org/rimraf","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

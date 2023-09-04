@@ -1,0 +1,2 @@
+
+9d53a9dfdb64bc6f1f56e031d4e06e812440806b	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/del/-/del-6.1.1.tgz","integrity":null,"time":1693643425382,"size":"0","metadata":{"time":1693643425382,"url":"http://registry.npmjs.org/del/-/del-6.1.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:26 GMT","location":"https://registry.npmjs.org/del/-/del-6.1.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

@@ -1,0 +1,2 @@
+
+3b255155c955ce995ce0642623a257a710c12444	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/temp-dir/-/temp-dir-2.0.0.tgz","integrity":null,"time":1693643480074,"size":"0","metadata":{"time":1693643480074,"url":"http://registry.npmjs.org/temp-dir/-/temp-dir-2.0.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:19 GMT","location":"https://registry.npmjs.org/temp-dir/-/temp-dir-2.0.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

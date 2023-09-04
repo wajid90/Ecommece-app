@@ -76,7 +76,12 @@ const ConfirmOrder = () => {
           <Text className="font-bold">{totalAmount}</Text>
         </View>
         <TouchableOpacity
-          onPress={cartItems.length>0?()=>navigation.navigate("payment"):null}
+          onPress={cartItems.length>0?()=>navigation.navigate("payment",{
+            itemPrice,
+            shippinfPrice,
+            taxprice,
+            totalAmount
+          }):null}
         >
           <Button
           

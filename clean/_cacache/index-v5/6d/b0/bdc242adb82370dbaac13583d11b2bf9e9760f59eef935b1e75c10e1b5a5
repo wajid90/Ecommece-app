@@ -1,0 +1,2 @@
+
+089372b7df96cf16b4878a1f09876a703965cc90	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz","integrity":null,"time":1693643424640,"size":"0","metadata":{"time":1693643424639,"url":"http://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:25 GMT","location":"https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

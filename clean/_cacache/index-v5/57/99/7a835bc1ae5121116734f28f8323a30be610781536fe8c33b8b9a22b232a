@@ -1,0 +1,2 @@
+
+18ad906f0e616931168c7c329515d92b6dfad5a6	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/metro-core","integrity":null,"time":1693599220654,"size":"0","metadata":{"time":1693599220654,"url":"http://registry.npmjs.org/metro-core","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:40 GMT","location":"https://registry.npmjs.org/metro-core","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

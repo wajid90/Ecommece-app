@@ -1,0 +1,2 @@
+
+0fd80ef49059a2ed5fcb1ff8c48102365ff4cc4e	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/klaw/-/klaw-1.3.1.tgz","integrity":null,"time":1693643422512,"size":"0","metadata":{"time":1693643422512,"url":"http://registry.npmjs.org/klaw/-/klaw-1.3.1.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:23 GMT","location":"https://registry.npmjs.org/klaw/-/klaw-1.3.1.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

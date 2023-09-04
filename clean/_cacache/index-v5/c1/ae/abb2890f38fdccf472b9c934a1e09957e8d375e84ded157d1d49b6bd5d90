@@ -1,0 +1,2 @@
+
+36c6124930aafba61be340db327f0e7ea7e8338d	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz","integrity":null,"time":1693643482673,"size":"0","metadata":{"time":1693643482673,"url":"http://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:22 GMT","location":"https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

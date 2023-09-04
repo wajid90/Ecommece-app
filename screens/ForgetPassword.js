@@ -11,12 +11,18 @@ import { TextInput } from "react-native";
 import { Alert } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
+import useCustomHook from "../components/CustomHook";
+import { useDispatch } from "react-redux";
+import { forgetPasswordData } from "../redux/Auth/userSlice";
 
 const ForgetPassword = ({ navigation }) => {
   const [obsecureText, useObsecureText] = useState(true);
 
 
-  const isLoadding=false;
+   const dispatch=useDispatch();
+
+   const isLoadding=useCustomHook(navigation,dispatch,"resetPassword");
+
   const signInSchma = Yup.object().shape({
     email: Yup.string()
       .email("Please Enter the Valid Email ...")
@@ -25,21 +31,11 @@ const ForgetPassword = ({ navigation }) => {
  
   });
 
-  const inValidForm = () => {
-    Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
-      {
-        text: "Cancel",
-        onPress: () => {},
-      },
-      {
-        text: "Continue",
-        onPress: () => {},
-      },
-    ]);
-  };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false}
+      className="bg-white"
+    >
       <SafeAreaView>
         <View className="relative w-full bg-white">
           <Image
@@ -71,12 +67,11 @@ const ForgetPassword = ({ navigation }) => {
           <Formik
             initialValues={{
               email: "",
-              password: "",
             }}
             validationSchema={signInSchma}
-            onSubmit={(values, { resetForm }) => {
-         
-           
+            onSubmit={(values, { resetForm }) => {  
+              console.log(values); 
+              dispatch(forgetPasswordData(values));
               setTimeout(() => {
                 resetForm();
               }, 200);
@@ -99,7 +94,7 @@ const ForgetPassword = ({ navigation }) => {
                 <View className="w-full">
                   <View className="w-full mt-10 mb-2">
                     <Text className="w-full ml-5">Email</Text>
-                    <View className="flex-row items-center mx-4 my-2 p-4 bg-gray-200  shadow-lg rounded-lg">
+                    <View className="flex-row items-center  mx-4 my-2 p-4 bg-gray-200  shadow-lg rounded-lg">
                       <MaterialCommunityIcons
                         name="email-outline"
                         size={24}
@@ -131,11 +126,18 @@ const ForgetPassword = ({ navigation }) => {
                 </View>
 
               <TouchableOpacity
-                onPress={()=>navigation.navigate("resetPassword")}
+                onPress={handleSubmit}
+                activeOpacity={0.9}
               >
                 <Button
+                 textColor={`${!isValid ? "black":"white"}`}
+                 style={{
+                  backgroundColor:`${!isValid ? "gray":"black"}`
+                  
+                }}
+                loading={isLoadding}
                  className="px-4 py-2 bg-black/[400] mx-4 my-2 rounded-full "
-                 textColor="white"
+                
                >
                   Send
                 </Button>

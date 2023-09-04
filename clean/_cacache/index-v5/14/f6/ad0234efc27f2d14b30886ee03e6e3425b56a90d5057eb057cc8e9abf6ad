@@ -1,0 +1,2 @@
+
+079072654d52690337a3403d82c5e7c5c4e2463a	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/bser","integrity":null,"time":1693599228619,"size":"0","metadata":{"time":1693599228619,"url":"http://registry.npmjs.org/bser","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:48 GMT","location":"https://registry.npmjs.org/bser","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

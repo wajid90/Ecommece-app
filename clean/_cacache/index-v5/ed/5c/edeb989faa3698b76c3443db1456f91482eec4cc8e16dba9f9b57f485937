@@ -1,0 +1,2 @@
+
+efc9bbbccd5e23c849583e56276d068f0845b31b	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/tar/-/tar-6.1.15.tgz","integrity":null,"time":1693643480095,"size":"0","metadata":{"time":1693643480095,"url":"http://registry.npmjs.org/tar/-/tar-6.1.15.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:20 GMT","location":"https://registry.npmjs.org/tar/-/tar-6.1.15.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

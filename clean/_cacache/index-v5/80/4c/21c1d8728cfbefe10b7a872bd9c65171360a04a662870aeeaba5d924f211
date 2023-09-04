@@ -1,0 +1,2 @@
+
+7600de8ed20e96225edab67fffdb8ca9af2d1298	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.4.4.tgz","integrity":null,"time":1693643424258,"size":"0","metadata":{"time":1693643424258,"url":"http://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.4.4.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:25 GMT","location":"https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.4.4.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

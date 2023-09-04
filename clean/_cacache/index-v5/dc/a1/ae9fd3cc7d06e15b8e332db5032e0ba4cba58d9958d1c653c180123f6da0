@@ -1,0 +1,2 @@
+
+8955eb8eebc584020159f7850a0946cd1e4511dc	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/walker/-/walker-1.0.8.tgz","integrity":null,"time":1693643479297,"size":"0","metadata":{"time":1693643479297,"url":"http://registry.npmjs.org/walker/-/walker-1.0.8.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:19 GMT","location":"https://registry.npmjs.org/walker/-/walker-1.0.8.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

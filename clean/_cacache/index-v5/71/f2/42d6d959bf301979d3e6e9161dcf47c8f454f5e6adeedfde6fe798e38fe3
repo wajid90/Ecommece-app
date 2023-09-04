@@ -1,0 +1,2 @@
+
+fd6532d7a9392a1b9cc9a85ff83769d0b3b47f25	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/decamelize","integrity":null,"time":1693599227265,"size":"0","metadata":{"time":1693599227264,"url":"http://registry.npmjs.org/decamelize","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Fri, 01 Sep 2023 20:13:47 GMT","location":"https://registry.npmjs.org/decamelize","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

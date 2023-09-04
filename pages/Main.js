@@ -37,7 +37,6 @@ import { userLoadData } from "../redux/Auth/userSlice";
 const Stack = createNativeStackNavigator();
 const Main = () => {
    const {user}=useSelector((state)=>state.auth);
-   console.log(user);
   const dispatch=useDispatch();
   useEffect(()=>{
     dispatch(userLoadData());

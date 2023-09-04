@@ -55,7 +55,7 @@ const AdminPanel = () => {
         </View>
       </View>
       <View className="w-full flex-row items-center mx-4">
-        <TouchableOpacity className="w-[45%] rounded-lg bg-color1 p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
+        <TouchableOpacity className="w-[45%] rounded-lg bg-black p-2 mr-2 shadow-lg transition-transform active:scale-95 duration-0">
           <Text className="font-bold text-lg text-white px-2">120000</Text>
           <View className="flex-row items-center justify-between mx-2">
             <Text className="font-semibold text-white my-2">Sells </Text>
@@ -129,9 +129,9 @@ const AdminPanel = () => {
           yAxisLabel="$"
           chartConfig={{
             backgroundColor: "#fff",
-            backgroundGradientFrom: "#c70049",
+            backgroundGradientFrom: "black",
             // backgroundGradientFromOpacity: 0,
-            backgroundGradientTo: "#c70049",
+            backgroundGradientTo: "black",
             // backgroundGradientToOpacity: 0.5,
             decimalPlaces: 2, // optional, defaults to 2dp
             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -153,7 +153,7 @@ const AdminPanel = () => {
               size={27}
               icon="arrow-right"
               color="white"
-              className="bg-color1"
+              className="bg-black"
             />
           </TouchableOpacity>
         </View>

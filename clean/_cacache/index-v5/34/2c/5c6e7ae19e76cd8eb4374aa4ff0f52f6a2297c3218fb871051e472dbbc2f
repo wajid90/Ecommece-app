@@ -1,0 +1,2 @@
+
+0fbbcc814b7c098dedb2b2545338b6c358a531fc	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/minipass/-/minipass-3.1.6.tgz","integrity":null,"time":1693643420801,"size":"0","metadata":{"time":1693643420793,"url":"http://registry.npmjs.org/minipass/-/minipass-3.1.6.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:21 GMT","location":"https://registry.npmjs.org/minipass/-/minipass-3.1.6.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

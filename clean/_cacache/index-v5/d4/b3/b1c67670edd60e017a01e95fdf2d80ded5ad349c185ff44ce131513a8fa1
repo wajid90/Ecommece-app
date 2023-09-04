@@ -1,0 +1,2 @@
+
+3d58d14aed850b4779dbb3b4564191ed7ec43088	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/nanomatch/-/nanomatch-1.2.13.tgz","integrity":null,"time":1693643486734,"size":"0","metadata":{"time":1693643486733,"url":"http://registry.npmjs.org/nanomatch/-/nanomatch-1.2.13.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:31:26 GMT","location":"https://registry.npmjs.org/nanomatch/-/nanomatch-1.2.13.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

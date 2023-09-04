@@ -1,0 +1,2 @@
+
+749e4f1efd441a303067ff3a8abc11ae86902425	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/bl/-/bl-4.1.0.tgz","integrity":null,"time":1693643431002,"size":"0","metadata":{"time":1693643431002,"url":"http://registry.npmjs.org/bl/-/bl-4.1.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:31 GMT","location":"https://registry.npmjs.org/bl/-/bl-4.1.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

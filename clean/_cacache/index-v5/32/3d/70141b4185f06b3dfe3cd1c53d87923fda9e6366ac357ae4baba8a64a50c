@@ -1,0 +1,2 @@
+
+8bfe15d0eac7598902722f89eb84db1ce2c7d784	{"key":"make-fetch-happen:request-cache:http://registry.npmjs.org/is-root/-/is-root-2.1.0.tgz","integrity":null,"time":1693643422858,"size":"0","metadata":{"time":1693643422858,"url":"http://registry.npmjs.org/is-root/-/is-root-2.1.0.tgz","reqHeaders":{},"resHeaders":{"content-type":"text/plain;charset=UTF-8","date":"Sat, 02 Sep 2023 08:30:23 GMT","location":"https://registry.npmjs.org/is-root/-/is-root-2.1.0.tgz","vary":"Accept-Encoding"},"options":{"compress":true},"status":301}}

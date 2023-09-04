@@ -11,7 +11,7 @@ const ConfirmOrderItem = ({
 }) => {
   return (
     <View 
-     key={key}
+     key={product}
      style={{
       backgroundColor:"white",
       borderRadius:5,
