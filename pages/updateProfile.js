@@ -133,7 +133,6 @@ const UpdateProfile = ({navigation,route}) => {
             }}  
             validationSchema={updateSchema}
             onSubmit={(values, { resetForm }) => {
-               console.log(values);
        
               dispatch(updateProfileData({
                 name: values?.name,

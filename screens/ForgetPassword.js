@@ -75,7 +75,7 @@ const ForgetPassword = ({ navigation }) => {
             }}
             validationSchema={signInSchma}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
+         
            
               setTimeout(() => {
                 resetForm();

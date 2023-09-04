@@ -152,7 +152,7 @@ const Register = ({ navigation, route }) => {
                 type:mime.getType(image),
                 name:image.split("/").pop()
                });
-             //  console.log(formData);
+      
               dispatch(AuthRegister(formData));
               setTimeout(() => {
                 resetForm();

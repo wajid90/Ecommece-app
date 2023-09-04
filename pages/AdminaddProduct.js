@@ -17,6 +17,7 @@ import Toast from "react-native-toast-message";
 import { createProducts, resetState } from "../redux/Products/productSlice";
 import mime from "mime";
 import { useDispatch, useSelector } from "react-redux";
+import DropDown from "react-native-paper-dropdown";
 // import { launchImageLibrary } from "react-native-image-picker";
 
 const productSchema = Yup.object().shape({
@@ -30,7 +31,6 @@ const productSchema = Yup.object().shape({
     .required("This field is required"),
   stock: Yup.number()
     .required("This field is required"),
-
     
 });
 
@@ -38,9 +38,27 @@ const AdminaddProduct = ({navigation,route}) => {
   const [obsecureText, useObsecureText] = useState(false);
 
   const [category,setCategory]=useState(null);
-
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [featured,setFeatured]=useState("");
   const dispatch =useDispatch();
   const isfocused=useIsFocused();
+
+
+  const genderList = [
+    {
+      label: "special Products",
+      value: "special Products",
+    },
+    {
+      label: "Famous Products",
+      value: "Famous Products",
+    },
+    {
+      label: "Latest products",
+      value: "Latest products",
+    },
+  ];
+
 
    const {isError,
     isSuccess,
@@ -48,7 +66,6 @@ const AdminaddProduct = ({navigation,route}) => {
 
   const [image,setImage]=useState("");
 
-  // console.log(obsecureText);
   useEffect(()=>{
     if(isError){
       Toast.show({
@@ -134,7 +151,7 @@ const AdminaddProduct = ({navigation,route}) => {
             }}
             validationSchema={productSchema}
             onSubmit={(values, { resetForm }) => {
-
+     
 
               if(category===null){
                 return Toast.show({
@@ -148,19 +165,25 @@ const AdminaddProduct = ({navigation,route}) => {
                   text1:"Image is Required ..."
                 });
               }
+              if(featured===""){
+                return Toast.show({
+                  type:"error",
+                  text1:"featured is Required ..."
+                });
+              }
               const formData=new FormData();
               formData.append("name",values.name);
               formData.append("description",values.description);
               formData.append("price",values.price);
               formData.append("stock",values.stock);
               formData.append("category",category);
+              formData.append("feature",featured);
               formData.append("file",{
                uri:image,
                type:mime.getType(image),
                name:image.split("/").pop()
               });
              dispatch(createProducts(formData));
-              
               setTimeout(() => {
                 resetForm();
               }, 200);
@@ -253,6 +276,54 @@ const AdminaddProduct = ({navigation,route}) => {
                         </Text>
                       )}
                     </View>
+                  </View>
+                  <View className="w-full">
+                    <View className="flex-1 h-[80px] mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">
+                    
+                      <DropDown
+                      label={""}
+                      mode={"outlined"}
+                       visible={showDropDown}
+                       showDropDown={() => setShowDropDown(true)}
+                       onDismiss={() => setShowDropDown(false)}
+                       value={featured}
+                       setValue={setFeatured}
+                       list={genderList}
+                       placeholder="Select Your Featured ..."
+                      
+                       dropDownItemStyle={{
+                        backgroundColor:"#edf2f7",
+                       
+                       }}
+                       inputProps={{
+                        style:{
+                          height:50,
+                          borderColor:"none",
+                          backgroundColor: 'transparent',
+                          borderColor:"transparent",
+                          
+                        }
+                      }}
+                      
+                       dropDownItemSelectedStyle={{
+                        backgroundColor:"#edf2f7"
+                       }}
+                       dropDownContainerMaxHeight={200}
+
+                       dropDownStyle={{
+                       
+                        borderColor:"transparent",
+                       }}
+                      
+                       dropDownItemTextStyle={{
+                        backgroundColor:"#edf2f7"
+                       }}
+                       dropDownItemSelectedTextStyle={{
+                        color:"black"
+                       }}
+                      />
+                    </View>
+                  
                   </View>
                   <View className="w-full">
                     <View className="flex-row items-center mx-4 my-2 p-2 bg-gray-200  shadow-lg rounded-lg">

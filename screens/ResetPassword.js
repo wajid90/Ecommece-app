@@ -11,12 +11,18 @@ import { TextInput } from "react-native";
 import { Alert } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
+import { resetPasswordData } from "../redux/Auth/userSlice";
+import { useDispatch } from "react-redux";
+import useCustomHook from "../components/CustomHook";
 
 const ResetPassword = ({ navigation }) => {
   const [obsecureText, useObsecureText] = useState(true);
 
 
-  const isLoadding=false;
+  const dispatch=useDispatch();
+
+  const isLoadding=useCustomHook(navigation,dispatch,"login");
+
   const signInSchma = Yup.object().shape({
     otp: Yup.number()
       .required("Otp is Requied .."),
@@ -27,19 +33,6 @@ const ResetPassword = ({ navigation }) => {
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
       ),
   });
-
-  const inValidForm = () => {
-    Alert.alert("Invaid Form", "Please Provide All required Fields ...", [
-      {
-        text: "Cancel",
-        onPress: () => {},
-      },
-      {
-        text: "Continue",
-        onPress: () => {},
-      },
-    ]);
-  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -53,21 +46,7 @@ const ResetPassword = ({ navigation }) => {
               resizeMode: "contain",
             }}
           />
-          <View
-            style={{
-              position: "absolute",
-              top: StatusBar.currentHeight,
-              left: 1,
-            }}
-            className="w-[90%] flex-row justify-between mx-4 my-2"
-          >
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              className="p-2 flex justify-center items-center  rounded-full w-10 h-10 bg-gray-200"
-            >
-              <Ionicons size={20} name="chevron-back" color="black" />
-            </TouchableOpacity>
-          </View>
+
           <Text className="text-center font-bold text-gray-500 text-xl -mt-4">
             Reset Password 
           </Text>
@@ -78,8 +57,7 @@ const ResetPassword = ({ navigation }) => {
             }}
             validationSchema={signInSchma}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
-              dispatch(AuthLogin(values));
+              dispatch(resetPasswordData(values));
               setTimeout(() => {
                 resetForm();
               }, 200);
@@ -176,15 +154,23 @@ const ResetPassword = ({ navigation }) => {
                   </View>
                 </View>
 
-              <TouchableOpacity>
+              <TouchableOpacity
+               onPress={handleSubmit}
+               activeOpacity={0.9}
+              >
                 <Button
                  className="px-4 py-2 bg-black/[400] mx-4 my-2 rounded-full "
-                 textColor="white"
+                 textColor={`${!isValid ? "black":"white"}`}
+                 style={{
+                  backgroundColor:`${!isValid ? "gray":"black"}`
+                  
+                }}
+                loading={isLoadding}
                >
                   Reset
                 </Button>
               </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.goBack()}
+                <TouchableOpacity onPress={() => navigation.navigate("forgetPassword")}
                  activeOpacity={0.9}
                 >
                 <Button
